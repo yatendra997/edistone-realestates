@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, MapPin, Phone, Facebook, Instagram, Linkedin, Youtube, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 export default function Footer() {
     return (
@@ -74,8 +74,8 @@ export default function Footer() {
                                 </div>
                                 <div className="flex gap-4 items-center mt-1">
                                     <Mail className="w-4 h-4 text-[#C8A24D] shrink-0" />
-                                    <a href="mailto:director@edistonerealesates.com" className="hover:text-white transition-colors text-[13px] break-all">
-                                        director@edistonerealesates.com
+                                    <a href="mailto:director@edistonerealestates.com" className="hover:text-white transition-colors text-[13px] break-all">
+                                        director@edistonerealestates.com
                                     </a>
                                 </div>
                             </div>
