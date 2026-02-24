@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 120">
+  <defs>
+    <style>
+      .text-logo { 
+        font-family: 'Arial Rounded MT Bold', 'Arial Black', 'Segoe UI Black', sans-serif; 
+        font-weight: 800; 
+        font-size: 58px; 
+        fill: #111111; 
+        letter-spacing: 1.5px; 
+      }
+      .text-slogan { 
+        font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; 
+        font-weight: 600; 
+        font-size: 24px; 
+        fill: #4b5563; 
+        letter-spacing: 3.5px; 
+      }
+    </style>
+  </defs>
+
+  <!-- Green Abstract Mountains/Buildings Icon reflecting the GAURS reference style -->
+  <g transform="translate(15, 12)">
+    <!-- Back/Right Taller Peak -->
+    <path d="M 35 65 L 55 5 L 75 65 Z" fill="#C8A24D"/>
+    <polygon points="55,25 61,45 49,45" fill="#FFFFFF"/>
+
+    <!-- Front/Left Shorter Peak overlapping the back one -->
+    <path d="M 5 65 L 28 15 L 51 65 Z" fill="#C8A24D"/>
+    <polygon points="28,32 34,50 22,50" fill="#FFFFFF"/>
+    
+    <!-- Small accent triangle floating on top left like the reference mark -->
+    <polygon points="28,2 33,10 23,10" fill="#C8A24D"/>
+  </g>
+
+  <!-- Text -->
+  <text x="105" y="74" class="text-logo">EDISTONE</text>
+  
+  <!-- Slogan -->
+  <text x="107" y="104" class="text-slogan">real estate pvt ltd</text>
+</svg>
