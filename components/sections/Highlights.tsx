@@ -61,11 +61,11 @@ export default function Highlights() {
     return (
         <section className="w-full bg-[#111111] shrink-0">
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 divide-x divide-white/10">
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 border-l border-t border-white/10">
                     {STATS.map((stat, idx) => (
                         <div
                             key={idx}
-                            className="flex flex-col items-center justify-center text-center py-6 sm:py-8 px-3 sm:px-4 transition-colors hover:bg-white/5"
+                            className="flex flex-col items-center justify-center text-center py-6 sm:py-8 px-3 sm:px-4 border-r border-b border-white/10 transition-colors hover:bg-white/5"
                         >
                             <Counter end={stat.value} suffix={stat.suffix} />
                             <p className="text-[10px] sm:text-[11px] font-semibold text-zinc-400 uppercase tracking-wider leading-tight whitespace-pre-line mt-1">

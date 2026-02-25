@@ -32,11 +32,10 @@ export default function Hero() {
         <>
             <section className="relative w-full bg-black shrink-0">
                 {/*
-                    Fixed aspect-ratio container matching Gaursons (~1440x550 = 2.618:1).
-                    Uses aspect-ratio so images are NEVER cut/cropped and fill edge to edge.
-                    On smaller screens it stays proportional.
+                    Fixed aspect-ratio container matching Gaursons logic but fully responsive.
+                    On smaller screens it stays proportional to mobile screen without harsh zooming/truncating.
                 */}
-                <div className="relative w-full" style={{ aspectRatio: "1440 / 550" }}>
+                <div className="relative w-full aspect-[4/3] sm:aspect-[21/9]">
                     {/* Fade-based Image Slider */}
                     {SLIDES.map((slide, idx) => (
                         <div
@@ -96,9 +95,9 @@ export default function Hero() {
                         <X className="w-4 h-4 text-[#111111]" />
                     </button>
                 )}
-                <div className="bg-[#111111] rounded-bl-lg shadow-2xl overflow-y-auto border-l border-white/10">
+                <div className="bg-[#111111] rounded-bl-lg shadow-2xl overflow-y-auto border-l border-white/10 max-h-[85vh]">
                     <div className="bg-[#C8A24D] px-4 py-2.5">
-                        <h3 className="text-white text-[11px] font-bold tracking-wide uppercase">For any query, contact us:</h3>
+                        <h3 className="text-white text-[11px] font-bold tracking-wide text-left uppercase">For any query, contact us:</h3>
                     </div>
                     <form className="px-4 py-3 flex flex-col gap-2">
                         <select className="w-full bg-[#D4D4D8] text-[#111] text-[11px] font-semibold px-3 py-2 rounded outline-none focus:ring-1 focus:ring-[#C8A24D] appearance-none cursor-pointer uppercase" defaultValue="">
@@ -115,7 +114,7 @@ export default function Hero() {
                         <input type="text" placeholder="COMMENT" className="w-full bg-white/90 text-[#111] text-[11px] px-3 py-2 rounded outline-none focus:ring-1 focus:ring-[#C8A24D] placeholder:text-zinc-400 placeholder:font-semibold placeholder:uppercase" />
                         <label className="flex items-start gap-2 cursor-pointer mt-1">
                             <input type="checkbox" className="mt-0.5 accent-[#C8A24D] shrink-0 w-3 h-3" />
-                            <span className="text-[9px] leading-[12px] text-white/60">I consent to Edistone Real Estates Pvt. Ltd. to collect and process my personal data based on the Privacy Notice.</span>
+                            <span className="text-[9px] leading-[14px] text-white/60 text-left">I consent to Edistone Real Estates Pvt. Ltd. to collect and process my personal data based on the Privacy Notice.</span>
                         </label>
                         <button type="submit" className="bg-white text-[#111] px-4 py-2 rounded text-[11px] font-extrabold flex items-center justify-center gap-1.5 hover:bg-[#C8A24D] hover:text-white transition-colors shadow-sm w-max mt-1 uppercase tracking-widest">
                             <Send className="w-3 h-3" /> Submit

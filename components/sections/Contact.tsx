@@ -41,8 +41,8 @@ export default function Contact() {
                                             <a href="tel:01202989566" className="hover:text-[#C8A24D] transition-colors">0120 2989566</a>
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-3 text-[#6B6B6B]">
-                                        <Mail className="w-4 h-4 text-[#C8A24D] shrink-0" />
+                                    <div className="flex items-center gap-3 text-[#6B6B6B] items-start">
+                                        <Mail className="w-4 h-4 text-[#C8A24D] shrink-0 mt-0.5" />
                                         <a href="mailto:director@edistonerealestates.com" className="hover:text-[#C8A24D] transition-colors break-all">director@edistonerealestates.com</a>
                                     </div>
                                 </div>
@@ -62,8 +62,8 @@ export default function Contact() {
                                             <a href="tel:+919220034416" className="hover:text-[#C8A24D] transition-colors">+91 9220034416</a>
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-3 text-[#6B6B6B] mt-1">
-                                        <Mail className="w-4 h-4 text-[#C8A24D] shrink-0" />
+                                    <div className="flex items-center gap-3 text-[#6B6B6B] mt-1 items-start">
+                                        <Mail className="w-4 h-4 text-[#C8A24D] shrink-0 mt-0.5" />
                                         <a href="mailto:Sales@edistonerealestates.com" className="hover:text-[#C8A24D] transition-colors break-all">Sales@edistonerealestates.com</a>
                                     </div>
                                 </div>

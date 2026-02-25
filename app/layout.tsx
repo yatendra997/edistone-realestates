@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     locale: "en_IN",
     siteName: "Edistone Real Estates",
   },
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({

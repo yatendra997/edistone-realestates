@@ -7,6 +7,7 @@ import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 interface SubDropdownItem {
     title: string;
     href: string;
+    target?: string;
 }
 
 interface DropdownItem {
@@ -47,7 +48,7 @@ const NAV_ITEMS: NavItem[] = [
                 title: "Ongoing",
                 href: "#",
                 subDropdown: [
-                    { title: "Residential", href: "#" },
+                    { title: "Residential", href: "/residential", target: "_blank" },
                     { title: "Premium", href: "#" },
                     { title: "Commercial", href: "#" },
                     { title: "Retail", href: "#" },
@@ -175,6 +176,7 @@ export default function Navbar() {
                                                                 <Link
                                                                     key={subItem.title}
                                                                     href={subItem.href}
+                                                                    target={subItem.target}
                                                                     className="block px-4 py-2.5 text-sm text-[#6B6B6B] hover:bg-zinc-50 hover:text-[#E3C67A] transition-colors"
                                                                 >
                                                                     {subItem.title}
@@ -294,6 +296,7 @@ export default function Navbar() {
                                                             <Link
                                                                 key={subItem.title}
                                                                 href={subItem.href}
+                                                                target={subItem.target}
                                                                 onClick={() => setMobileMenuOpen(false)}
                                                                 className="block pl-14 pr-6 py-2.5 text-sm text-[#6B6B6B] hover:text-zinc-900"
                                                             >
