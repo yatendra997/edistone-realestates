@@ -19,7 +19,7 @@ export default function About() {
                         About <span className="font-bold">Edistone</span>
                     </h2>
                     <p className="text-sm sm:text-base text-[#6B6B6B] uppercase tracking-widest font-semibold text-center">
-                        Building the Foundation of Dreams
+                        Built on Trust, Strong as Stone
                     </p>
                 </div>
 
@@ -34,10 +34,10 @@ export default function About() {
 
                         <div className="space-y-6 text-[#6B6B6B] text-[15px] sm:text-[17px] leading-relaxed">
                             <p>
-                                At Edistone Real Estates, we believe a property is more than just walls and land. It is the cornerstone of your security and your future. Our vision is to redefine your real estate experience by delivering completely transparent, trustworthy, and beautifully tailored solutions.
+                                Edistone Real Estates is built on trust and reliability. The name <strong className="text-[#111111]">Edistone</strong> represents a strong foundation, premium service, and long-term property management expertise. Like stone — durable, beautiful, and enduring — we stand for everything that makes a property truly valuable: strength, reliability, and timeless appeal.
                             </p>
                             <p>
-                                From helping you step into your first home to expanding your commercial portfolio, we provide end-to-end guidance spanning selection, legal assistance, and after-sales support. With our deep market expertise and an unwavering client-first approach, we guarantee seamless transactions and truly worthwhile investments.
+                                We help clients invest in residential, commercial, and industrial properties across NCR. From helping you step into your first home to expanding your commercial portfolio, we provide end-to-end guidance spanning selection, legal assistance, and after-sales support — with unwavering transparency at every step.
                             </p>
                         </div>
 
