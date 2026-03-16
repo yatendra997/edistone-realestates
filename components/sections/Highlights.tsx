@@ -50,18 +50,15 @@ function Counter({ end, suffix = "" }: { end: number; suffix?: string }) {
 
 export default function Highlights() {
     const STATS = [
-        { value: 25, suffix: "", label: "MN+ SQ.FT.\nAREA DEVELOPED" },
-        { value: 80123, suffix: "+", label: "HAPPY CUSTOMERS" },
-        { value: 21500, suffix: "+", label: "SUCCESSFULLY DELIVERED\nUNITS" },
-        { value: 15400, suffix: "+", label: "POSSESSIONS GIVEN\n(2014-25)" },
-        { value: 28, suffix: "+", label: "SUCCESSFULLY DELIVERED\nPROJECTS" },
-        { value: 15, suffix: "", label: "YEARS OF UNFALTERING\nCOMMITMENT" },
+        { value: 28000, suffix: "+", label: "HAPPY CUSTOMERS" },
+        { value: 8100, suffix: "+", label: "SUCCESSFUL DEALS" },
+        { value: 50, suffix: "+", label: "PROJECTS SOLD" },
     ];
 
     return (
         <section className="w-full bg-[#111111] shrink-0">
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 border-l border-t border-white/10">
+                <div className="grid grid-cols-1 sm:grid-cols-3 border-l border-t border-white/10">
                     {STATS.map((stat, idx) => (
                         <div
                             key={idx}
