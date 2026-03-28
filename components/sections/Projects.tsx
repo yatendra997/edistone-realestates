@@ -1,108 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { Building2, MapPin, IndianRupee, ShieldCheck, ChevronDown, ChevronRight, Send, User, Phone, Home } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Building2, MapPin, IndianRupee, ShieldCheck, ChevronDown, ChevronRight, Send, User, Phone, Home, Mail, MessageSquare } from "lucide-react";
 
-// ─────────────────────────────────────────────
-// DATA
-// ─────────────────────────────────────────────
-
-const LOCATIONS = ["GZB", "Greater Noida", "Noida", "Yamuna", "Other Locations"] as const;
-type Location = typeof LOCATIONS[number];
-
-const PROPERTY_TYPES = ["Residential", "Commercial", "Industrial"] as const;
-type PropertyType = typeof PROPERTY_TYPES[number];
-
-interface Project {
-  id: number;
-  location: Location;
-  type: PropertyType;
-  title: string;
-  info: string;
-  price: string;
-  area: string;
-}
-
-const NEW_PROJECTS: Project[] = [
-  // GZB
-  { id: 1, location: "GZB", type: "Residential", title: "Gaur Crestella", info: "2/3/4 BHK Apartments", price: "₹ 85L Onwards", area: "Raj Nagar Ext., GZB" },
-  { id: 2, location: "GZB", type: "Residential", title: "VVIP Addresses", info: "3/4 BHK Premium Flats", price: "₹ 1.2Cr Onwards", area: "Indirapuram, GZB" },
-  { id: 3, location: "GZB", type: "Commercial", title: "SKA Arcadia", info: "Retail Shops & Offices", price: "₹ 50L Onwards", area: "NH-58, GZB" },
-  { id: 4, location: "GZB", type: "Commercial", title: "Iris Trehan", info: "Commercial Spaces", price: "₹ 40L Onwards", area: "Crossings Republik, GZB" },
-  { id: 5, location: "GZB", type: "Commercial", title: "KB West Walk", info: "Retail & Food Court", price: "₹ 35L Onwards", area: "Vaishali, GZB" },
-  { id: 6, location: "GZB", type: "Industrial", title: "Factory Units – GZB", info: "Ready-to-Move Factory Sheds", price: "Price On Request", area: "UPSIDC Industrial Area, GZB" },
-  { id: 7, location: "GZB", type: "Industrial", title: "Warehouse – GZB", info: "Grade-A Warehousing (UPSIDA Approved)", price: "Price On Request", area: "Loni Industrial Area, GZB" },
-
-  // Greater Noida
-  { id: 8, location: "Greater Noida", type: "Residential", title: "VVIP Namah", info: "3/4 BHK Luxury Residences", price: "₹ 1.5Cr Onwards", area: "Greater Noida West" },
-  { id: 9, location: "Greater Noida", type: "Residential", title: "The Kutumb", info: "2/3 BHK Family Apartments", price: "₹ 95L Onwards", area: "Techzone 4, Greater Noida" },
-  { id: 10, location: "Greater Noida", type: "Residential", title: "ACE Hane", info: "3/4 BHK Smart Homes", price: "₹ 1.1Cr Onwards", area: "Sector 12, Greater Noida West" },
-  { id: 11, location: "Greater Noida", type: "Residential", title: "Palm Adela", info: "3/4 BHK Premium Apartments", price: "₹ 1.6Cr Onwards", area: "Greater Noida West" },
-  { id: 12, location: "Greater Noida", type: "Commercial", title: "SKA Arcadia – GN", info: "Commercial Shops & Suites", price: "₹ 55L Onwards", area: "Greater Noida West" },
-  { id: 13, location: "Greater Noida", type: "Industrial", title: "Industrial Land – GN", info: "UPSIDA-Approved Industrial Land", price: "Price On Request", area: "UPSIDC Sector, Greater Noida" },
-
-  // Noida
-  { id: 14, location: "Noida", type: "Residential", title: "Solutairion City", info: "2/3/4 BHK Residences", price: "₹ 90L Onwards", area: "Sector 137, Noida" },
-  { id: 15, location: "Noida", type: "Residential", title: "TNT (Rajhans)", info: "3/4 BHK Ultra Premium Flats", price: "₹ 2Cr Onwards", area: "Sector 150, Noida" },
-  { id: 16, location: "Noida", type: "Commercial", title: "KB West Walk – Noida", info: "Retail & Commercial Hub", price: "₹ 60L Onwards", area: "Sector 62, Noida" },
-  { id: 17, location: "Noida", type: "Industrial", title: "Warehouse – Noida", info: "Grade-A Logistics & Warehousing", price: "Price On Request", area: "Sector 57, Noida" },
-
-  // Yamuna
-  { id: 18, location: "Yamuna", type: "Residential", title: "VVIP Namah – Yamuna", info: "3/4 BHK Expressway Homes", price: "₹ 1.3Cr Onwards", area: "Sector 22D, Yamuna Expressway" },
-  { id: 19, location: "Yamuna", type: "Commercial", title: "Aerocity Yamuna", info: "Commercial Plots & Suites", price: "Price On Request", area: "Yamuna Expressway" },
-  { id: 20, location: "Yamuna", type: "Industrial", title: "Industrial Land – Yamuna", info: "UPSIDA-Approved Industrial Plots", price: "Price On Request", area: "Tappal, Yamuna Expressway" },
-
-  // Other Locations
-  { id: 21, location: "Other Locations", type: "Residential", title: "Premium Residences", info: "2/3/4 BHK Apartments", price: "Price On Request", area: "NCR – Various Locations" },
-  { id: 22, location: "Other Locations", type: "Commercial", title: "Commercial Spaces", info: "Retail & Office Units", price: "Price On Request", area: "NCR – Various Locations" },
-  { id: 23, location: "Other Locations", type: "Industrial", title: "Industrial Units", info: "Factory & Warehouse (UPSIDA Approved)", price: "Price On Request", area: "NCR – Various Locations" },
-];
-
-const ONGOING_CATEGORIES = ["Residential", "Commercial", "Premium", "Industrial"] as const;
-type OngoingCategory = typeof ONGOING_CATEGORIES[number];
-
-interface OngoingProject {
-  title: string;
-  info: string;
-  location: string;
-  category: OngoingCategory;
-}
-
-const ONGOING_PROJECTS: OngoingProject[] = [
-  // Residential
-  { title: "VVIP Namah", info: "3/4 BHK Luxury Residences", location: "Greater Noida West", category: "Residential" },
-  { title: "The Kutumb", info: "2/3 BHK Family Apartments", location: "Yamuna Expressway", category: "Residential" },
-  { title: "ACE Hane", info: "3/4 BHK Smart Homes", location: "GZB – Raj Nagar Ext.", category: "Residential" },
-  { title: "Solutairion City", info: "2/3/4 BHK Societies", location: "Sector 137, Noida", category: "Residential" },
-
-  // Commercial
-  { title: "SKA Arcadia", info: "Retail Shops, Offices & Food Court", location: "Greater Noida West", category: "Commercial" },
-  { title: "Iris Trehan", info: "Commercial Spaces & Co-working", location: "Crossings Republik, GZB", category: "Commercial" },
-  { title: "KB West Walk", info: "Retail & Entertainment Hub", location: "Vaishali, GZB", category: "Commercial" },
-
-  // Premium
-  { title: "Palm Adela", info: "3/4 BHK Super Premium Apartments", location: "Greater Noida West", category: "Premium" },
-  { title: "VVIP Addresses", info: "3/4 BHK Signature Residences", location: "Indirapuram, GZB", category: "Premium" },
-  { title: "Gaur Crestella", info: "3/4 BHK Premium Living", location: "Raj Nagar Ext., GZB", category: "Premium" },
-  { title: "TNT (Rajhans)", info: "Ultra-Premium 3/4 BHK Flats", location: "Sector 150, Noida", category: "Premium" },
-
-  // Industrial
-  { title: "Factory Units", info: "Ready-to-Move Factory Sheds", location: "UPSIDC Area, GZB", category: "Industrial" },
-  { title: "Warehouse", info: "Grade-A Logistics & Warehousing", location: "Loni Industrial Area", category: "Industrial" },
-  { title: "Industrial Land (UPSIDA Approved)", info: "Approved Plots for Manufacturing", location: "NCR – Multiple Locations", category: "Industrial" },
-];
+import { LOCATIONS, PROPERTY_TYPES, NEW_PROJECTS, OTHER_LOCATIONS, type Location, type PropertyType, type Project } from "../../data/projects";
 
 // ─────────────────────────────────────────────
 // RESALE FORM
 // ─────────────────────────────────────────────
 function ResaleForm() {
   const [formData, setFormData] = useState({
-    name: "", contact: "", propertyType: "", preferredLocation: "",
-    size: "", budget: "", city: "", state: "",
+    name: "", contact: "", email: "", propertyType: "", saleOrPurchase: "",
+    preferredLocation: "", size: "", budget: "", city: "", state: "",
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -114,16 +29,16 @@ function ResaleForm() {
   if (submitted) {
     return (
       <div className="flex flex-col items-center justify-center py-20 gap-6 text-center">
-        <div className="w-16 h-16 rounded-full bg-[#C8A24D]/10 flex items-center justify-center">
-          <ShieldCheck className="w-8 h-8 text-[#C8A24D]" />
+        <div className="w-16 h-16 rounded-full bg-[#FF5C00]/10 flex items-center justify-center">
+          <ShieldCheck className="w-8 h-8 text-[#FF5C00]" />
         </div>
         <h3 className="text-2xl font-bold text-[#111111]">Thank You!</h3>
         <p className="text-[#6B6B6B] max-w-md text-[15px] leading-relaxed">
-          Your resale enquiry has been submitted. Our team will contact you within 24 hours with the best matching properties.
+          Your enquiry has been submitted. Our team will contact you within 24 hours with the best matching properties.
         </p>
         <button
-          onClick={() => { setSubmitted(false); setFormData({ name: "", contact: "", propertyType: "", preferredLocation: "", size: "", budget: "", city: "", state: "" }); }}
-          className="px-6 py-2.5 border-2 border-[#111111] text-sm font-semibold hover:bg-[#111111] hover:text-white transition-colors uppercase tracking-wide"
+          onClick={() => { setSubmitted(false); setFormData({ name: "", contact: "", email: "", propertyType: "", saleOrPurchase: "", preferredLocation: "", size: "", budget: "", city: "", state: "" }); }}
+          className="px-8 py-3 bg-white border-2 border-[#111111] text-[#111111] text-sm font-bold rounded-lg hover:bg-[#111111] hover:text-white transition-colors uppercase tracking-widest shadow-sm"
         >
           Submit Another
         </button>
@@ -134,7 +49,7 @@ function ResaleForm() {
   return (
     <div className="max-w-3xl mx-auto">
       <div className="text-center mb-10">
-        <h3 className="text-2xl sm:text-3xl font-semibold text-[#111111] mb-3">Find Your Resale Property</h3>
+        <h3 className="text-2xl sm:text-3xl font-semibold text-[#111111] mb-3">Want to Purchase or Resale?</h3>
         <p className="text-[#6B6B6B] text-[15px] leading-relaxed">
           Share your requirements and our experts will connect you with the best resale options across NCR — quickly and transparently.
         </p>
@@ -144,51 +59,82 @@ function ResaleForm() {
 
         {/* Name */}
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Full Name <span className="text-[#C8A24D]">*</span></label>
+          <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Full Name <span className="text-[#FF5C00]">*</span></label>
           <div className="relative">
             <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
             <input required name="name" value={formData.name} onChange={handleChange}
               placeholder="Enter your full name"
-              className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors" />
+              className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
           </div>
         </div>
 
         {/* Contact */}
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Contact Number <span className="text-[#C8A24D]">*</span></label>
+          <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Contact Number <span className="text-[#FF5C00]">*</span></label>
           <div className="relative">
             <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
             <input required name="contact" value={formData.contact} onChange={handleChange}
               placeholder="+91 00000 00000" type="tel"
-              className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors" />
+              className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
+          </div>
+        </div>
+
+        {/* Email */}
+        <div className="flex flex-col gap-2 sm:col-span-2">
+          <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Email Address</label>
+          <div className="relative">
+            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
+            <input name="email" value={formData.email} onChange={handleChange}
+              placeholder="you@example.com" type="email"
+              className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
           </div>
         </div>
 
         {/* Property Type */}
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Property Type <span className="text-[#C8A24D]">*</span></label>
+          <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Property Type <span className="text-[#FF5C00]">*</span></label>
           <div className="relative">
             <Home className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
             <select required name="propertyType" value={formData.propertyType} onChange={handleChange}
-              className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors appearance-none">
+              className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors appearance-none">
               <option value="">Select property type</option>
               <option value="Flat">Flat</option>
               <option value="Villa">Villa</option>
               <option value="Plot">Plot</option>
+              <option value="Independent House">Independent House</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Industrial">Industrial</option>
             </select>
             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
           </div>
         </div>
 
+        {/* Sale or Purchase */}
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Requirement Type <span className="text-[#FF5C00]">*</span></label>
+          <div className="flex gap-4 pt-1">
+            <label className="flex items-center gap-2 cursor-pointer group">
+              <input type="radio" name="saleOrPurchase" value="Purchase" checked={formData.saleOrPurchase === "Purchase"} onChange={handleChange}
+                className="accent-[#FF5C00] w-4 h-4" required />
+              <span className="text-sm font-semibold text-[#111111] group-hover:text-[#FF5C00] transition-colors">Purchase</span>
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer group">
+              <input type="radio" name="saleOrPurchase" value="Sale" checked={formData.saleOrPurchase === "Sale"} onChange={handleChange}
+                className="accent-[#FF5C00] w-4 h-4" />
+              <span className="text-sm font-semibold text-[#111111] group-hover:text-[#FF5C00] transition-colors">Sale</span>
+            </label>
+          </div>
+        </div>
+
         {/* Preferred Location */}
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Preferred Location <span className="text-[#C8A24D]">*</span></label>
+          <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Preferred Location <span className="text-[#FF5C00]">*</span></label>
           <div className="relative">
             <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
             <select required name="preferredLocation" value={formData.preferredLocation} onChange={handleChange}
-              className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors appearance-none">
+              className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors appearance-none">
               <option value="">Select location</option>
-              <option>GZB (Ghaziabad)</option>
+              <option>Ghaziabad</option>
               <option>Greater Noida</option>
               <option>Noida</option>
               <option>Yamuna Expressway</option>
@@ -205,25 +151,18 @@ function ResaleForm() {
             <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
             <input name="size" value={formData.size} onChange={handleChange}
               placeholder="e.g. 1200 sq. ft."
-              className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors" />
+              className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
           </div>
         </div>
 
-        {/* Budget */}
+        {/* Budget – Manual text field in Indian Rupees */}
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Budget <span className="text-[#C8A24D]">*</span></label>
+          <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Budget (₹) <span className="text-[#FF5C00]">*</span></label>
           <div className="relative">
-            <IndianRupee className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
-            <select required name="budget" value={formData.budget} onChange={handleChange}
-              className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors appearance-none">
-              <option value="">Select budget range</option>
-              <option>Below ₹ 50 Lakhs</option>
-              <option>₹ 50L – ₹ 1 Cr</option>
-              <option>₹ 1Cr – ₹ 2Cr</option>
-              <option>₹ 2Cr – ₹ 5Cr</option>
-              <option>Above ₹ 5Cr</option>
-            </select>
-            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
+            <IndianRupee className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
+            <input required name="budget" value={formData.budget} onChange={handleChange}
+              placeholder="e.g. 75 Lakhs or 1.5 Crore"
+              className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
           </div>
         </div>
 
@@ -232,7 +171,7 @@ function ResaleForm() {
           <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">City</label>
           <input name="city" value={formData.city} onChange={handleChange}
             placeholder="e.g. Noida"
-            className="w-full px-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors" />
+            className="w-full px-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
         </div>
 
         {/* State */}
@@ -240,17 +179,17 @@ function ResaleForm() {
           <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">State</label>
           <input name="state" value={formData.state} onChange={handleChange}
             placeholder="e.g. Uttar Pradesh"
-            className="w-full px-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors" />
+            className="w-full px-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
         </div>
 
         {/* Submit */}
-        <div className="sm:col-span-2">
+        <div className="sm:col-span-2 pt-2">
           <button type="submit"
-            className="w-full flex items-center justify-center gap-3 py-4 bg-[#111111] text-[#C8A24D] text-sm font-bold uppercase tracking-widest hover:bg-[#C8A24D] hover:text-white transition-all duration-300">
-            <Send className="w-4 h-4" />
+            className="w-full flex items-center justify-center gap-3 py-4 bg-[#FF5C00] text-white text-sm font-bold uppercase tracking-widest hover:bg-[#111111] rounded-lg transition-all duration-300 shadow-md hover:shadow-lg group">
+            <Send className="w-4 h-4 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
             Submit Enquiry
           </button>
-          <p className="text-center text-xs text-zinc-400 mt-3">
+          <p className="text-center text-xs text-zinc-500 mt-4">
             Your information is secure. We do not share your details with third parties.
           </p>
         </div>
@@ -260,132 +199,307 @@ function ResaleForm() {
 }
 
 // ─────────────────────────────────────────────
-// NEW PROJECTS PANEL
+// OTHER LOCATIONS REQUIREMENT FORM
 // ─────────────────────────────────────────────
-function NewProjectsPanel() {
-  const [activeLocation, setActiveLocation] = useState<Location>("GZB");
+function OtherLocationsForm() {
+  const [formData, setFormData] = useState({
+    name: "", contact: "", email: "", propertyType: "", location: "", comments: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="flex flex-col gap-10">
+      {/* Location Pills */}
+      <div className="flex flex-col items-center mb-4">
+        <div className="w-12 h-1 bg-[#FF5C00] mx-auto mb-5" />
+        <h3 className="text-2xl sm:text-3xl font-light text-[#111111] mb-3 text-center">
+          Projects in <span className="font-bold">Other Locations</span>
+        </h3>
+        <p className="text-[#6B6B6B] text-[15px] text-center max-w-xl mb-8">
+          We have project availability and investment opportunities across India. Share your requirement and our expert team will assist you.
+        </p>
+        <div className="flex flex-wrap gap-3 sm:gap-4 justify-center">
+          {OTHER_LOCATIONS.map((loc) => (
+            <span key={loc} className="px-6 py-3 sm:px-8 sm:py-3.5 bg-zinc-50 text-[#111111] text-sm sm:text-base font-extrabold uppercase tracking-wide border-2 border-zinc-200 rounded-full shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-[#FF5C00] hover:text-[#FF5C00] transition-all duration-300 cursor-default">
+              {loc}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Requirement Form */}
+      <div className="bg-white border border-zinc-200 shadow-sm p-8 sm:p-10 max-w-2xl mx-auto w-full">
+        <div className="text-center mb-8">
+          <h4 className="text-xl font-bold text-[#111111] mb-2">Submit Your Requirement</h4>
+          <p className="text-[#6B6B6B] text-sm">Tell us what you&apos;re looking for and we&apos;ll find the perfect match.</p>
+        </div>
+
+        {submitted ? (
+          <div className="flex flex-col items-center py-12 gap-5 text-center">
+            <div className="w-16 h-16 rounded-full bg-[#FF5C00]/10 flex items-center justify-center">
+              <ShieldCheck className="w-8 h-8 text-[#FF5C00]" />
+            </div>
+            <h3 className="text-xl font-bold text-[#111111]">Requirement Received!</h3>
+            <p className="text-[#6B6B6B]">Our team will reach out to you within 24 hours.</p>
+            <button onClick={() => { setSubmitted(false); setFormData({ name: "", contact: "", email: "", propertyType: "", location: "", comments: "" }); }}
+              className="px-8 py-3 bg-white border-2 border-[#111111] text-[#111111] text-sm font-bold rounded-lg hover:bg-[#111111] hover:text-white transition-colors uppercase tracking-widest shadow-sm">
+              Submit Another
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Name <span className="text-[#FF5C00]">*</span></label>
+              <div className="relative">
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
+                <input required name="name" value={formData.name} onChange={handleChange} placeholder="Your full name"
+                  className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
+              </div>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Contact <span className="text-[#FF5C00]">*</span></label>
+              <div className="relative">
+                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
+                <input required name="contact" value={formData.contact} onChange={handleChange} placeholder="+91 00000 00000" type="tel"
+                  className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
+              </div>
+            </div>
+            <div className="flex flex-col gap-1.5 sm:col-span-2">
+              <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Email</label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
+                <input name="email" value={formData.email} onChange={handleChange} placeholder="you@example.com" type="email"
+                  className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
+              </div>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Property Type <span className="text-[#FF5C00]">*</span></label>
+              <div className="relative">
+                <Home className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
+                <select required name="propertyType" value={formData.propertyType} onChange={handleChange}
+                  className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors appearance-none">
+                  <option value="">Select type</option>
+                  <option>Residential</option>
+                  <option>Commercial</option>
+                  <option>Industrial</option>
+                  <option>Plot / Land</option>
+                  <option>Villa</option>
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
+              </div>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Preferred Location <span className="text-[#FF5C00]">*</span></label>
+              <div className="relative">
+                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
+                <select required name="location" value={formData.location} onChange={handleChange}
+                  className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors appearance-none">
+                  <option value="">Select location</option>
+                  {OTHER_LOCATIONS.map((loc) => <option key={loc}>{loc}</option>)}
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
+              </div>
+            </div>
+            <div className="flex flex-col gap-1.5 sm:col-span-2">
+              <label className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
+                <MessageSquare className="w-3.5 h-3.5 text-[#FF5C00]" /> Comments
+              </label>
+              <textarea name="comments" value={formData.comments} onChange={handleChange}
+                rows={3} placeholder="Tell us about your specific requirements..."
+                className="w-full px-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors resize-none" />
+            </div>
+            <div className="sm:col-span-2 pt-2">
+              <button type="submit"
+                className="w-full flex items-center justify-center gap-3 py-4 bg-[#FF5C00] text-white text-sm font-bold uppercase tracking-widest hover:bg-[#111111] rounded-lg transition-all duration-300 shadow-md hover:shadow-lg group">
+                <Send className="w-4 h-4 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" /> Submit Requirement
+              </button>
+            </div>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
+const ImageWithFallback = ({ title, defaultImage, alt, className }: { title: string, defaultImage: string, alt: string, className?: string }) => {
+  const [imgSrc, setImgSrc] = useState(defaultImage);
+  const [errorCount, setErrorCount] = useState(0);
+
+  const getFallbacks = (title: string, defaultImg: string) => {
+    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const firstName = slug.split('-')[0];
+    const secondWord = slug.split('-').length > 1 ? slug.split('-')[1] : '';
+
+    const possiblePaths = [
+      defaultImg,
+      `/Project-images/${slug}.jpg`,
+      `/Project-images/${slug}.png`,
+      `/Project-images/${slug}.webp`,
+      `/Project-images/${slug}.jpeg`,
+      `/Project-images/${firstName}.jpg`,
+      `/Project-images/${firstName}.png`,
+      `/Project-images/${firstName}.webp`,
+      `/Project-images/${firstName}.jpeg`,
+      `/${slug}.jpg`,
+      `/${slug}.png`,
+      `/${slug}.webp`,
+      `/${slug}.jpeg`,
+      `/${firstName}.jpg`,
+      `/${firstName}.png`,
+      `/${firstName}.webp`,
+      `/${firstName}.jpeg`,
+    ];
+
+    if (firstName === 'the' && secondWord) {
+      possiblePaths.push(`/Project-images/${secondWord}.jpg`);
+      possiblePaths.push(`/${secondWord}.jpg`);
+    }
+
+    return Array.from(new Set(possiblePaths));
+  };
+
+  const fallbacks = getFallbacks(title, defaultImage);
+
+  return (
+    <Image
+      src={imgSrc}
+      alt={alt}
+      fill
+      className={className}
+      onError={() => {
+        if (errorCount < fallbacks.length - 1) {
+          const nextIndex = errorCount + 1;
+          setErrorCount(nextIndex);
+          setImgSrc(fallbacks[nextIndex]);
+        }
+      }}
+    />
+  );
+};
+
+// ─────────────────────────────────────────────
+// NEW / ONGOING PROJECTS PANEL (merged)
+// ─────────────────────────────────────────────
+function NewOngoingProjectsPanel() {
+  const [activeLocation, setActiveLocation] = useState<Location>("Ghaziabad");
   const [activeType, setActiveType] = useState<PropertyType>("Residential");
 
   const filtered = NEW_PROJECTS.filter(
     (p) => p.location === activeLocation && p.type === activeType
   );
 
-  return (
-    <div className="flex flex-col gap-8">
-      {/* Location tabs */}
-      <div className="flex flex-wrap gap-2">
-        {LOCATIONS.map((loc) => (
-          <button key={loc} onClick={() => setActiveLocation(loc)}
-            className={`px-4 py-2 text-xs font-bold uppercase tracking-wider border-2 transition-all duration-200 ${activeLocation === loc
-              ? "bg-[#111111] text-[#C8A24D] border-[#111111]"
-              : "bg-white text-[#111111] border-zinc-300 hover:border-[#111111]"}`}>
-            {loc}
-          </button>
-        ))}
-      </div>
-
-      {/* Property type sub-tabs */}
-      <div className="flex flex-wrap gap-2 border-b border-zinc-200 pb-4">
-        {PROPERTY_TYPES.map((type) => (
-          <button key={type} onClick={() => setActiveType(type)}
-            className={`flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-200 rounded-full border ${activeType === type
-              ? "bg-[#C8A24D] text-white border-[#C8A24D]"
-              : "bg-transparent text-zinc-600 border-zinc-300 hover:border-[#C8A24D] hover:text-[#C8A24D]"}`}>
-            <ChevronRight className="w-3 h-3" /> {type}
-          </button>
-        ))}
-      </div>
-
-      {/* Project cards */}
-      {filtered.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((p) => (
-            <div key={p.id} className="bg-white border border-zinc-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group">
-              {/* Card header */}
-              <div className="p-5 border-b border-zinc-100 flex flex-col gap-1">
-                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#C8A24D] uppercase tracking-widest">
-                  <ChevronRight className="w-3 h-3" />{activeLocation} · {activeType}
-                </span>
-                <h3 className="text-base font-bold text-[#111111] group-hover:text-[#C8A24D] transition-colors">{p.title}</h3>
-                <p className="text-[13px] text-[#6B6B6B]">{p.info}</p>
-              </div>
-              {/* Card details */}
-              <div className="p-5 flex flex-col gap-3 text-[13px] text-[#6B6B6B] flex-grow">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-[#C8A24D] shrink-0" />
-                  <span>{p.area}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <IndianRupee className="w-3.5 h-3.5 text-[#C8A24D] shrink-0" />
-                  <span className="font-semibold text-[#111111]">{p.price}</span>
-                </div>
-              </div>
-              {/* Card action */}
-              <div className="border-t border-zinc-100">
-                <button className="w-full py-3 text-xs font-bold uppercase tracking-widest text-[#111111] hover:bg-[#C8A24D] hover:text-white transition-colors">
-                  Enquire Now
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="py-16 text-center text-[#6B6B6B] font-medium">
-          No projects currently listed for <strong>{activeLocation} – {activeType}</strong>. Please contact our team.
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────
-// ONGOING PROJECTS PANEL
-// ─────────────────────────────────────────────
-function OngoingProjectsPanel() {
-  const [activeCategory, setActiveCategory] = useState<OngoingCategory>("Residential");
-  const filtered = ONGOING_PROJECTS.filter((p) => p.category === activeCategory);
-
-  const categoryColors: Record<OngoingCategory, string> = {
-    Residential: "bg-blue-50 text-blue-700 border-blue-200",
-    Commercial: "bg-amber-50 text-amber-700 border-amber-200",
-    Premium: "bg-purple-50 text-purple-700 border-purple-200",
-    Industrial: "bg-zinc-100 text-zinc-700 border-zinc-300",
-  };
-
-  return (
-    <div className="flex flex-col gap-8">
-      {/* Category tabs */}
-      <div className="flex flex-wrap gap-2">
-        {ONGOING_CATEGORIES.map((cat) => (
-          <button key={cat} onClick={() => setActiveCategory(cat)}
-            className={`px-5 py-2.5 text-xs font-bold uppercase tracking-wider border-2 transition-all duration-200 ${activeCategory === cat
-              ? "bg-[#111111] text-[#C8A24D] border-[#111111]"
-              : "bg-white text-[#111111] border-zinc-300 hover:border-[#111111]"}`}>
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      {/* Project list */}
+  let content;
+  if (activeLocation === "Other Locations") {
+    content = <OtherLocationsForm />;
+  } else if (filtered.length > 0) {
+    content = (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filtered.map((p, idx) => (
-          <div key={idx} className="bg-white border border-zinc-200 shadow-sm hover:shadow-lg transition-all duration-300 p-6 flex flex-col gap-4 group">
-            <div className="flex items-start justify-between gap-3">
-              <h3 className="text-base font-bold text-[#111111] group-hover:text-[#C8A24D] transition-colors leading-snug">{p.title}</h3>
-              <span className={`text-[10px] font-bold uppercase tracking-wide px-2 py-1 rounded border shrink-0 ${categoryColors[p.category]}`}>
-                {p.category}
-              </span>
+        {filtered.map((p) => (
+          <div key={p.id} className="bg-white border border-zinc-200 shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col group overflow-hidden rounded-xl hover:-translate-y-1">
+            {/* Image Container */}
+            <div className="relative w-full h-56 sm:h-64 overflow-hidden">
+              <ImageWithFallback
+                title={p.title}
+                defaultImage={p.image}
+                alt={p.title}
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              {/* Strong gradient for text overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              {/* Property type badge */}
+              <div className="absolute top-3 left-3 bg-[#FF5C00] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white rounded-full shadow-md">
+                {p.type}
+              </div>
+              {/* Status badge */}
+              {p.badge && (
+                <div className={`absolute top-3 right-3 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white rounded-full shadow-md ${
+                  p.badge === 'Hot' ? 'bg-red-500' :
+                  p.badge === 'New' ? 'bg-green-600' : 'bg-[#FF5C00]'
+                }`}>
+                  {p.badge}
+                </div>
+              )}
+              {/* Location badge */}
+              <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
+                <MapPin className="w-3 h-3 text-[#FF5C00]" />
+                <span className="text-[10px] font-bold text-white/90 uppercase tracking-widest">{activeLocation}</span>
+              </div>
             </div>
-            <p className="text-[13px] text-[#6B6B6B] leading-relaxed">{p.info}</p>
-            <div className="flex items-center gap-2 text-[13px] text-[#6B6B6B] mt-auto">
-              <MapPin className="w-3.5 h-3.5 text-[#C8A24D] shrink-0" />
-              <span>{p.location}</span>
+
+            {/* Card body */}
+            <div className="p-5 flex flex-col gap-2 flex-grow">
+              <h3 className="text-lg font-bold text-[#111111] group-hover:text-[#FF5C00] transition-colors duration-300 leading-snug">{p.title}</h3>
+              <p className="text-[13px] text-[#6B6B6B] leading-relaxed line-clamp-2">{p.info}</p>
             </div>
-            <button className="w-full py-2.5 border-2 border-[#111111] text-xs font-bold uppercase tracking-widest text-[#111111] hover:bg-[#111111] hover:text-[#C8A24D] transition-all">
-              Know More
-            </button>
+
+            {/* Card action */}
+            <div className="px-5 pb-5 mt-auto">
+              {p.slug ? (
+                <Link href={`/projects/${p.slug}`}
+                  className="w-full py-3.5 text-xs font-bold uppercase tracking-widest text-white bg-[#FF5C00] hover:bg-[#111111] rounded-lg transition-colors duration-300 flex items-center justify-center gap-2 group/btn shadow-md">
+                  Enquire Now <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                </Link>
+              ) : (
+                <button className="w-full py-3.5 text-xs font-bold uppercase tracking-widest text-white bg-[#FF5C00] hover:bg-[#111111] rounded-lg transition-colors duration-300 flex items-center justify-center gap-2 group/btn shadow-md">
+                  Enquire Now <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                </button>
+              )}
+            </div>
           </div>
         ))}
+      </div>
+    );
+  } else {
+    content = (
+      <div className="py-16 text-center text-[#6B6B6B] font-medium">
+        No projects currently listed for <strong>{activeLocation} – {activeType}</strong>. Please contact our team.
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col gap-6">
+      {/* Filters Container — normal flow, not sticky */}
+      <div className="bg-[#F7F7F5] py-4 flex flex-col gap-3 border border-zinc-200/60 rounded-xl px-4 sm:px-6">
+
+        {/* Location tabs */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+          {LOCATIONS.map((loc) => (
+            <button key={loc} onClick={() => setActiveLocation(loc)}
+              className={`px-4 py-2 sm:px-5 sm:py-2 text-[12px] sm:text-[13px] font-extrabold uppercase tracking-wide rounded-full border-2 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 ${activeLocation === loc
+                ? "bg-[#111111] text-white border-[#111111] shadow-md"
+                : "bg-white text-[#111111] border-zinc-300 hover:border-[#111111] hover:bg-zinc-50"}`}>
+              {loc}
+            </button>
+          ))}
+        </div>
+
+        {/* Property type sub-tabs */}
+        {activeLocation !== "Other Locations" && (
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 pt-1">
+            {PROPERTY_TYPES.map((type) => (
+              <button key={type} onClick={() => setActiveType(type)}
+                className={`flex items-center gap-1.5 px-4 py-1.5 sm:px-5 sm:py-2 text-[12px] sm:text-[13px] font-bold uppercase tracking-wide transition-all duration-300 rounded-full border-2 hover:shadow-md hover:-translate-y-0.5 ${activeType === type
+                  ? "bg-[#FF5C00] text-white border-[#FF5C00] shadow-md"
+                  : "bg-white text-zinc-600 border-zinc-300 hover:border-[#FF5C00] hover:text-[#FF5C00]"}`}>
+                <ChevronRight className={`w-3.5 h-3.5 transition-transform duration-300 ${activeType === type ? 'rotate-90' : ''}`} /> {type}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div>
+        {content}
       </div>
     </div>
   );
@@ -394,43 +508,48 @@ function OngoingProjectsPanel() {
 // ─────────────────────────────────────────────
 // MAIN EXPORT
 // ─────────────────────────────────────────────
-const MAIN_TABS = ["New Projects", "Ongoing Projects", "Resale Projects"] as const;
+const MAIN_TABS = ["New / Ongoing Projects", "Resale Projects"] as const;
 type MainTab = typeof MAIN_TABS[number];
 
 export default function Projects() {
-  const [activeTab, setActiveTab] = useState<MainTab>("New Projects");
+  const [activeTab, setActiveTab] = useState<MainTab>("New / Ongoing Projects");
 
   return (
-    <section id="projects" className="w-full py-20 sm:py-28 bg-[#F7F7F5] shrink-0">
+    <section id="projects" className="w-full pt-10 pb-20 sm:pt-12 sm:pb-28 bg-[#F7F7F5] shrink-0">
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section header */}
         <div className="flex flex-col items-center mb-12">
-          <div className="w-16 h-1 bg-[#C8A24D] mb-6" />
-          <h2 className="text-3xl sm:text-4xl font-light tracking-tight text-[#111111] text-center mb-4">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-12 h-0.5 bg-[#FF5C00]" />
+            <Building2 className="w-5 h-5 text-[#FF5C00]" />
+            <div className="w-12 h-0.5 bg-[#FF5C00]" />
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-light tracking-tight text-[#111111] text-center mb-3">
             Our <span className="font-bold">Projects</span>
           </h2>
           <p className="text-sm text-[#6B6B6B] uppercase tracking-widest font-semibold text-center">
-            Residential · Commercial · Industrial — Across NCR
+            Residential · Commercial · Industrial — Across NCR &amp; India
           </p>
         </div>
 
         {/* Main tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-12 border-b-2 border-zinc-200 pb-4">
-          {MAIN_TABS.map((tab) => (
-            <button key={tab} onClick={() => setActiveTab(tab)}
-              className={`px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300 border-b-2 -mb-[17px] ${activeTab === tab
-                ? "border-[#C8A24D] text-[#C8A24D]"
-                : "border-transparent text-zinc-500 hover:text-[#111111]"}`}>
-              {tab}
-            </button>
-          ))}
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex bg-white p-1.5 rounded-full border border-zinc-200 shadow-sm overflow-x-auto max-w-full hide-scrollbar">
+            {MAIN_TABS.map((tab) => (
+              <button key={tab} onClick={() => setActiveTab(tab)}
+                className={`px-6 sm:px-8 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 rounded-full whitespace-nowrap ${activeTab === tab
+                  ? "bg-[#111111] text-[#FF5C00] shadow-md"
+                  : "bg-transparent text-zinc-500 hover:text-[#111111] hover:bg-zinc-50"}`}>
+                {tab}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Tab content */}
         <div className="mt-8">
-          {activeTab === "New Projects" && <NewProjectsPanel />}
-          {activeTab === "Ongoing Projects" && <OngoingProjectsPanel />}
+          {activeTab === "New / Ongoing Projects" && <NewOngoingProjectsPanel />}
           {activeTab === "Resale Projects" && <ResaleForm />}
         </div>
 

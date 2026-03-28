@@ -5,34 +5,44 @@ import { Maximize2 } from "lucide-react";
 // Curated Ultra HD images featuring Indian Premium Apartments & Custom Edistone Buildings
 const GALLERY_IMAGES = [
     {
-        src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800",
-        alt: "Premium Highrise Architecture",
-        title: "Skyline Residences",
+        src: "/Gallery-1.jpeg",
+        alt: "Gallery Image 1",
+        title: "Premium Project 1",
     },
     {
-        src: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800",
-        alt: "Edistone Chrysalis Project",
-        title: "Edistone Chrysalis",
+        src: "/Gallery-2.jpeg",
+        alt: "Gallery Image 2",
+        title: "Premium Project 2",
     },
     {
-        src: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=800",
-        alt: "Modern Building Facade",
-        title: "Green Avenue Township",
+        src: "/Gallery-3.jpeg",
+        alt: "Gallery Image 3",
+        title: "Premium Project 3",
     },
     {
-        src: "https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=800",
-        alt: "Edistone Platinum Towers",
-        title: "Platinum Towers",
+        src: "/Gallery-4.jpeg",
+        alt: "Gallery Image 4",
+        title: "Premium Project 4",
     },
     {
-        src: "https://images.unsplash.com/photo-1580041065738-e72023775cdc?q=80&w=800",
-        alt: "Premium Apartment Facade",
-        title: "Saundaryam Heights",
+        src: "/Gallery-5.jpeg",
+        alt: "Gallery Image 5",
+        title: "Premium Project 5",
     },
     {
-        src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800",
-        alt: "Ultra Luxury Residence",
-        title: "Centurian Park",
+        src: "/Gallery-6.jpeg",
+        alt: "Gallery Image 6",
+        title: "Premium Project 6",
+    },
+    {
+        src: "/Gallery-7.jpeg",
+        alt: "Gallery Image 7",
+        title: "Premium Project 7",
+    },
+    {
+        src: "/Gallery-8.jpeg",
+        alt: "Gallery Image 8",
+        title: "Premium Project 8",
     },
 ];
 
@@ -55,37 +65,37 @@ export default function Gallery() {
                     </p>
                 </div>
 
-                {/* Uniform 3-Column Grid Layout */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                {/* Uniform 4-Column Grid Layout (Smaller Cards) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                     {GALLERY_IMAGES.map((img, idx) => (
                         <div
                             key={idx}
-                            className="relative group overflow-hidden bg-[#111111] shadow-md border border-[#C8A24D]/20 aspect-[4/3] sm:aspect-[4/3]"
+                            className="relative overflow-hidden bg-white shadow-xl rounded-2xl aspect-square group transition-all duration-500 hover:shadow-2xl hover:-translate-y-1"
                         >
-                            {/* Image */}
+                            {/* Blurred Background (The "Border Match") */}
+                            <img
+                                src={img.src}
+                                alt=""
+                                className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                                aria-hidden="true"
+                            />
+
+                            {/* Main Image (Zoomed In) */}
                             <img
                                 src={img.src}
                                 alt={img.alt}
-                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90 group-hover:opacity-100"
+                                className="relative z-10 w-full h-full object-cover p-1 group-hover:scale-110 transition-transform duration-700"
                             />
 
-                            {/* Deep Charcoal Hover Overlay */}
-                            <div className="absolute inset-0 bg-[#111111]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-6 text-center">
-                                <div className="w-12 h-12 rounded-full border border-[#C8A24D] flex items-center justify-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                                    <Maximize2 className="w-5 h-5 text-[#C8A24D]" />
-                                </div>
-                                <h3 className="text-[#C8A24D] font-bold text-base sm:text-lg uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-150">
-                                    {img.title}
-                                </h3>
-                                <div className="w-8 h-px bg-[#C8A24D] mt-4 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-200" />
-                            </div>
+                            {/* Subtle Overlay on Hover */}
+                            <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
                         </div>
                     ))}
                 </div>
 
                 {/* Footer Button */}
                 <div className="mt-16 text-center">
-                    <button className="px-10 py-4 bg-transparent border border-[#111111] text-[#111111] text-sm font-bold uppercase tracking-widest hover:bg-[#111111] hover:text-[#C8A24D] transition-colors duration-300">
+                    <button className="px-10 py-4 bg-transparent border border-[#111111] text-[#111111] text-sm font-bold uppercase tracking-widest hover:bg-[#111111] hover:text-[#FF5C00] transition-colors duration-300">
                         View All Media
                     </button>
                 </div>

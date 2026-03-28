@@ -26,7 +26,7 @@ const QUICK_LINKS = [
   { label: "About Us", href: "/#about" },
   { label: "Career", href: "/career" },
   { label: "Gallery", href: "/gallery" },
-  { label: "New Projects", href: "/new-projects" },
+  { label: "New / Ongoing Projects", href: "/new-projects" },
   { label: "Resale Projects", href: "/resale-projects" },
   { label: "Contact Us", href: "/#contact" },
 ];
@@ -44,15 +44,26 @@ const SOCIAL_LINKS = [
 export default function Footer() {
   return (
     <>
-      <footer className="w-full bg-[#0A0D14] pt-16 pb-12 shrink-0 font-sans text-sm">
+      <footer className="w-full bg-[#111111] pt-16 pb-12 shrink-0 font-sans text-sm">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 sm:gap-8 pb-12 border-b border-white/10">
 
             {/* Column 1: Brand Info & Socials */}
             <div className="flex flex-col">
-              <Link href="/" className="inline-block relative mb-6">
-                <img src="/logo.svg" alt="Edistone Real Estates" className="h-10 sm:h-12 w-auto object-contain brightness-0 invert opacity-90" />
+              <Link href="/" className="inline-flex items-center gap-3 sm:gap-4 group mb-6">
+                <img src="/edistone-logo.png?v=latest" alt="Edistone Icon" className="h-11 sm:h-14 w-auto object-contain drop-shadow-sm" />
+                <div className="flex flex-col leading-none justify-center">
+                  <span className="font-bold uppercase tracking-normal text-white text-2xl sm:text-3xl" style={{ fontFamily: '"Playfair Display", "Times New Roman", Times, serif' }}>
+                    EDISTONE
+                  </span>
+                  <div className="flex items-center gap-2 mt-1 sm:mt-1.5 ml-0.5">
+                    <div className="h-[2px] w-8 sm:w-10 bg-[#FF5C00]" />
+                    <span className="text-[#FF5C00] font-bold uppercase tracking-[0.25em] text-[9.5px] sm:text-[11px]" style={{ fontFamily: '"Inter", "Arial", sans-serif' }}>
+                      REAL ESTATES
+                    </span>
+                  </div>
+                </div>
               </Link>
               <p className="text-[#848A9A] leading-relaxed mb-8 text-[13px]">
                 Synonymous with quality and trust in the NCR real estate market. Creating landmarks that redefine residential, commercial, and industrial living.
@@ -67,7 +78,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="w-9 h-9 rounded-full bg-[#181C25] flex items-center justify-center text-zinc-400 hover:bg-[#C8A24D] hover:text-white transition-all"
+                    className="w-9 h-9 rounded-full bg-[#181C25] flex items-center justify-center text-zinc-400 hover:bg-[#FF5C00] hover:text-white transition-all"
                   >
                     {icon}
                   </a>
@@ -82,7 +93,7 @@ export default function Footer() {
               </h4>
               <div className="flex flex-col gap-3 text-[#848A9A]">
                 {QUICK_LINKS.map(({ label, href }) => (
-                  <Link key={label} href={href} className="hover:text-[#C8A24D] transition-colors w-max text-[13px]">
+                  <Link key={label} href={href} className="hover:text-[#FF5C00] transition-colors w-max text-[13px]">
                     {label}
                   </Link>
                 ))}
@@ -117,23 +128,23 @@ export default function Footer() {
               </h4>
               <div className="flex flex-col gap-6 text-[#848A9A]">
                 <div className="flex gap-4">
-                  <MapPin className="w-4 h-4 text-[#C8A24D] shrink-0 mt-1" />
+                  <MapPin className="w-4 h-4 text-[#FF5C00] shrink-0 mt-1" />
                   <p className="leading-relaxed text-[13px]">
                     Office No 626, Sixth Floor,<br />
-                    Aditya High Street NH 24,<br />
+                    Aditya High Street, NH 24,<br />
                     Lal Kuan, Ghaziabad,<br />
                     Uttar Pradesh 201009
                   </p>
                 </div>
                 <div className="flex gap-4">
-                  <Phone className="w-4 h-4 text-[#C8A24D] shrink-0 mt-1" />
+                  <Phone className="w-4 h-4 text-[#FF5C00] shrink-0 mt-1" />
                   <div className="flex flex-col gap-1 text-[13px]">
                     <a href="tel:+919220034414" className="hover:text-white transition-colors">+91 9220034414</a>
                     <a href="tel:01202989566" className="hover:text-white transition-colors">0120 2989566</a>
                   </div>
                 </div>
                 <div className="flex gap-4 items-center">
-                  <Mail className="w-4 h-4 text-[#C8A24D] shrink-0" />
+                  <Mail className="w-4 h-4 text-[#FF5C00] shrink-0" />
                   <a href="mailto:info@edistonerealestates.com" className="hover:text-white transition-colors text-[13px] break-all">
                     info@edistonerealestates.com
                   </a>
@@ -148,16 +159,16 @@ export default function Footer() {
               </h4>
               <div className="flex flex-col gap-6 text-[#848A9A]">
                 <div className="flex gap-4">
-                  <Phone className="w-4 h-4 text-[#C8A24D] shrink-0 mt-1" />
+                  <Phone className="w-4 h-4 text-[#FF5C00] shrink-0 mt-1" />
                   <div className="flex flex-col gap-1 text-[13px]">
-                    <a href="tel:+919220034418" className="hover:text-white transition-colors">+91 92200 34418</a>
                     <a href="tel:+919220034416" className="hover:text-white transition-colors">+91 92200 34416</a>
+                    <a href="tel:+919220034418" className="hover:text-white transition-colors">+91 92200 34418</a>
                   </div>
                 </div>
                 <div className="flex gap-4 items-center">
-                  <Mail className="w-4 h-4 text-[#C8A24D] shrink-0" />
-                  <a href="mailto:info@edistonerealestates.com" className="hover:text-white transition-colors text-[13px] break-all">
-                    info@edistonerealestates.com
+                  <Mail className="w-4 h-4 text-[#FF5C00] shrink-0" />
+                  <a href="mailto:sales@edistonerealestates.com" className="hover:text-white transition-colors text-[13px] break-all">
+                    sales@edistonerealestates.com
                   </a>
                 </div>
               </div>

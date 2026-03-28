@@ -7,6 +7,7 @@ interface FormData {
   name: string;
   contact: string;
   propertyType: string;
+  saleOrPurchase: string;
   preferredLocation: string;
   size: string;
   budget: string;
@@ -93,11 +94,11 @@ export default function ResaleProjectsPage() {
   const [filterType, setFilterType] = useState<string>("All");
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState<FormData>({
-    name: "", contact: "", propertyType: "", preferredLocation: "",
+    name: "", contact: "", propertyType: "", saleOrPurchase: "", preferredLocation: "",
     size: "", budget: "", city: "", state: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -116,11 +117,11 @@ export default function ResaleProjectsPage() {
       {/* ── Hero ── */}
       <section className="w-full bg-[#111111] py-20 sm:py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1600')] bg-cover bg-center opacity-10" />
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#C8A24D] to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF5C00] to-transparent" />
         <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="w-16 h-1 bg-[#C8A24D] mb-6 mx-auto" />
+          <div className="w-16 h-1 bg-[#FF5C00] mb-6 mx-auto" />
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight mb-5">
-            Resale <span className="font-bold text-[#C8A24D]">Properties</span>
+            Resale <span className="font-bold text-[#FF5C00]">Properties</span>
           </h1>
           <p className="text-zinc-300 text-lg max-w-2xl mx-auto leading-relaxed font-light">
             Verified resale flats, villas, and plots across NCR — curated by our experts for the best value deals.
@@ -131,20 +132,20 @@ export default function ResaleProjectsPage() {
       {/* ── Resale Listings ── */}
       <section className="w-full py-16 sm:py-20 bg-[#F7F7F5]">
         <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
-            <div>
+          <div className="flex flex-col items-center gap-6 mb-12">
+            <div className="text-center">
               <h2 className="text-2xl sm:text-3xl font-light text-[#111111]">
                 Available <span className="font-bold">Resale Properties</span>
               </h2>
               <p className="text-[#6B6B6B] text-sm mt-1">All properties are verified and legally clear.</p>
             </div>
-            {/* Type Filter */}
-            <div className="flex gap-2">
+            {/* Type Filter - Centered and Larger */}
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
               {["All", "Flat", "Villa", "Plot"].map((t) => (
                 <button key={t} onClick={() => setFilterType(t)}
-                  className={`px-4 py-2 text-xs font-bold uppercase tracking-wider border-2 transition-all ${filterType === t
-                    ? "bg-[#111111] text-[#C8A24D] border-[#111111]"
-                    : "bg-white text-[#111111] border-zinc-300 hover:border-[#111111]"}`}>
+                  className={`px-6 py-2.5 sm:px-8 sm:py-3 text-[13px] sm:text-[15px] font-extrabold uppercase tracking-wide rounded-full border-2 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 ${filterType === t
+                    ? "bg-[#111111] text-white border-[#111111] shadow-md ring-4 ring-[#111111]/20"
+                    : "bg-white text-[#111111] border-zinc-300 hover:border-[#111111] hover:bg-zinc-50"}`}>
                   {t}
                 </button>
               ))}
@@ -157,9 +158,9 @@ export default function ResaleProjectsPage() {
                 {/* Card header */}
                 <div className="p-5 border-b border-zinc-100 flex justify-between items-start gap-3">
                   <div>
-                    <h3 className="font-bold text-[#111111] text-base group-hover:text-[#C8A24D] transition-colors leading-snug">{listing.title}</h3>
+                    <h3 className="font-bold text-[#111111] text-base group-hover:text-[#FF5C00] transition-colors leading-snug">{listing.title}</h3>
                     <div className="flex items-center gap-1.5 mt-1.5 text-[13px] text-[#6B6B6B]">
-                      <MapPin className="w-3.5 h-3.5 text-[#C8A24D] shrink-0" />
+                      <MapPin className="w-3.5 h-3.5 text-[#FF5C00] shrink-0" />
                       {listing.location}
                     </div>
                   </div>
@@ -172,16 +173,16 @@ export default function ResaleProjectsPage() {
                 <div className="p-5 flex flex-col gap-3 flex-grow">
                   <div className="grid grid-cols-2 gap-3 text-[13px]">
                     <div className="flex items-center gap-2 text-[#6B6B6B]">
-                      <Building2 className="w-3.5 h-3.5 text-[#C8A24D]" />
+                      <Building2 className="w-3.5 h-3.5 text-[#FF5C00]" />
                       {listing.size}
                     </div>
                     <div className="flex items-center gap-2 text-[#6B6B6B]">
-                      <Home className="w-3.5 h-3.5 text-[#C8A24D]" />
+                      <Home className="w-3.5 h-3.5 text-[#FF5C00]" />
                       {listing.floor}
                     </div>
                   </div>
                   <div className="flex items-center gap-2 text-[13px]">
-                    <IndianRupee className="w-3.5 h-3.5 text-[#C8A24D] shrink-0" />
+                    <IndianRupee className="w-3.5 h-3.5 text-[#FF5C00] shrink-0" />
                     <span className="font-bold text-[#111111] text-base">{listing.price}</span>
                     <span className="text-zinc-400 text-[11px] ml-auto">{listing.age}</span>
                   </div>
@@ -197,8 +198,8 @@ export default function ResaleProjectsPage() {
                   <button className="py-3.5 text-xs font-bold uppercase tracking-wide text-[#6B6B6B] bg-[#F7F7F5] hover:bg-zinc-200 transition-colors border-r border-zinc-100">
                     View Details
                   </button>
-                  <a href="tel:+919220034418"
-                    className="py-3.5 text-xs font-bold uppercase tracking-wide text-[#111111] bg-[#efefef] hover:bg-[#C8A24D] hover:text-white transition-colors text-center flex items-center justify-center gap-1.5">
+                  <a href="tel:+919220034416"
+                    className="py-3.5 text-xs font-bold uppercase tracking-wide text-[#111111] bg-[#efefef] hover:bg-[#FF5C00] hover:text-white transition-colors text-center flex items-center justify-center gap-1.5">
                     <Phone className="w-3 h-3" /> Call Now
                   </a>
                 </div>
@@ -209,9 +210,9 @@ export default function ResaleProjectsPage() {
           {/* ── Lead Gen Form ── */}
           <div id="enquiry" className="bg-white border border-zinc-200 shadow-sm p-8 sm:p-12">
             <div className="text-center mb-10">
-              <div className="w-12 h-1 bg-[#C8A24D] mx-auto mb-5" />
+              <div className="w-12 h-1 bg-[#FF5C00] mx-auto mb-5" />
               <h2 className="text-2xl sm:text-3xl font-light text-[#111111] mb-3">
-                Can&apos;t Find What You&apos;re Looking For?
+                Want to Purchase or <span className="font-bold">Resale?</span>
               </h2>
               <p className="text-[#6B6B6B] text-[15px] max-w-xl mx-auto leading-relaxed">
                 Share your exact requirement and our resale experts will personally curate the best matching options across NCR — completely free of charge.
@@ -220,15 +221,15 @@ export default function ResaleProjectsPage() {
 
             {submitted ? (
               <div className="flex flex-col items-center justify-center py-16 gap-5 text-center">
-                <div className="w-16 h-16 rounded-full bg-[#C8A24D]/10 flex items-center justify-center">
-                  <ShieldCheck className="w-8 h-8 text-[#C8A24D]" />
+                <div className="w-16 h-16 rounded-full bg-[#FF5C00]/10 flex items-center justify-center">
+                  <ShieldCheck className="w-8 h-8 text-[#FF5C00]" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#111111]">Enquiry Received!</h3>
                 <p className="text-[#6B6B6B] text-[15px] leading-relaxed max-w-sm">
                   Our team will contact you within 24 hours with the best matching resale properties.
                 </p>
                 <button
-                  onClick={() => { setSubmitted(false); setFormData({ name: "", contact: "", propertyType: "", preferredLocation: "", size: "", budget: "", city: "", state: "" }); }}
+                  onClick={() => { setSubmitted(false); setFormData({ name: "", contact: "", propertyType: "", saleOrPurchase: "", preferredLocation: "", size: "", budget: "", city: "", state: "" }); }}
                   className="px-6 py-2.5 border-2 border-[#111111] text-sm font-semibold hover:bg-[#111111] hover:text-white transition-colors uppercase tracking-wide"
                 >
                   Submit Another
@@ -238,44 +239,63 @@ export default function ResaleProjectsPage() {
               <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 {/* Name */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Full Name <span className="text-[#C8A24D]">*</span></label>
+                  <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Full Name <span className="text-[#FF5C00]">*</span></label>
                   <div className="relative">
                     <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
                     <input required name="name" value={formData.name} onChange={handleChange} placeholder="Enter your full name"
-                      className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors" />
+                      className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
                   </div>
                 </div>
                 {/* Contact */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Contact Number <span className="text-[#C8A24D]">*</span></label>
+                  <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Contact Number <span className="text-[#FF5C00]">*</span></label>
                   <div className="relative">
                     <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
                     <input required name="contact" value={formData.contact} onChange={handleChange} placeholder="+91 00000 00000" type="tel"
-                      className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors" />
+                      className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
                   </div>
                 </div>
                 {/* Property Type */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Property Type <span className="text-[#C8A24D]">*</span></label>
+                  <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Property Type <span className="text-[#FF5C00]">*</span></label>
                   <div className="relative">
                     <Home className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
                     <select required name="propertyType" value={formData.propertyType} onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors appearance-none">
+                      className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors appearance-none">
                       <option value="">Select property type</option>
                       <option>Flat</option>
                       <option>Villa</option>
                       <option>Plot</option>
+                      <option>Independent House</option>
+                      <option>Commercial</option>
+                      <option>Industrial</option>
                     </select>
                     <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
                   </div>
                 </div>
+                {/* Sale or Purchase */}
+                <div className="flex flex-col gap-2">
+                  <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Requirement Type <span className="text-[#FF5C00]">*</span></label>
+                  <div className="flex gap-6 pt-1">
+                    <label className="flex items-center gap-2 cursor-pointer group">
+                      <input type="radio" name="saleOrPurchase" value="Purchase" checked={formData.saleOrPurchase === "Purchase"} onChange={handleChange}
+                        className="accent-[#FF5C00] w-4 h-4" required />
+                      <span className="text-sm font-semibold text-[#111111] group-hover:text-[#FF5C00] transition-colors">Purchase</span>
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer group">
+                      <input type="radio" name="saleOrPurchase" value="Sale" checked={formData.saleOrPurchase === "Sale"} onChange={handleChange}
+                        className="accent-[#FF5C00] w-4 h-4" />
+                      <span className="text-sm font-semibold text-[#111111] group-hover:text-[#FF5C00] transition-colors">Sale</span>
+                    </label>
+                  </div>
+                </div>
                 {/* Location */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Preferred Location <span className="text-[#C8A24D]">*</span></label>
+                  <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Preferred Location <span className="text-[#FF5C00]">*</span></label>
                   <div className="relative">
                     <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
                     <select required name="preferredLocation" value={formData.preferredLocation} onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors appearance-none">
+                      className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors appearance-none">
                       <option value="">Select location</option>
                       <option>GZB (Ghaziabad)</option>
                       <option>Greater Noida</option>
@@ -292,42 +312,35 @@ export default function ResaleProjectsPage() {
                   <div className="relative">
                     <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
                     <input name="size" value={formData.size} onChange={handleChange} placeholder="e.g. 1200 sq. ft."
-                      className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors" />
+                      className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
                   </div>
                 </div>
-                {/* Budget */}
+                {/* Budget – Manual text entry in Indian Rupees */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Budget <span className="text-[#C8A24D]">*</span></label>
+                  <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">Budget (₹) <span className="text-[#FF5C00]">*</span></label>
                   <div className="relative">
-                    <IndianRupee className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
-                    <select required name="budget" value={formData.budget} onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors appearance-none">
-                      <option value="">Select budget range</option>
-                      <option>Below ₹ 50 Lakhs</option>
-                      <option>₹ 50L – ₹ 1 Cr</option>
-                      <option>₹ 1Cr – ₹ 2Cr</option>
-                      <option>₹ 2Cr – ₹ 5Cr</option>
-                      <option>Above ₹ 5Cr</option>
-                    </select>
-                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
+                    <IndianRupee className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
+                    <input required name="budget" value={formData.budget} onChange={handleChange}
+                      placeholder="e.g. 75 Lakhs or 1.5 Crore"
+                      className="w-full pl-10 pr-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
                   </div>
                 </div>
                 {/* City */}
                 <div className="flex flex-col gap-2">
                   <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">City</label>
                   <input name="city" value={formData.city} onChange={handleChange} placeholder="e.g. Noida"
-                    className="w-full px-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors" />
+                    className="w-full px-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
                 </div>
                 {/* State */}
                 <div className="flex flex-col gap-2">
                   <label className="text-xs font-bold text-[#111111] uppercase tracking-wider">State</label>
                   <input name="state" value={formData.state} onChange={handleChange} placeholder="e.g. Uttar Pradesh"
-                    className="w-full px-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#C8A24D] transition-colors" />
+                    className="w-full px-4 py-3 border border-zinc-200 bg-[#FAFAFA] text-sm text-[#111111] focus:outline-none focus:border-[#FF5C00] transition-colors" />
                 </div>
                 {/* Submit */}
                 <div className="sm:col-span-2">
                   <button type="submit"
-                    className="w-full flex items-center justify-center gap-3 py-4 bg-[#111111] text-[#C8A24D] text-sm font-bold uppercase tracking-widest hover:bg-[#C8A24D] hover:text-white transition-all duration-300">
+                    className="w-full flex items-center justify-center gap-3 py-4 bg-[#111111] text-[#FF5C00] text-sm font-bold uppercase tracking-widest hover:bg-[#FF5C00] hover:text-white transition-all duration-300">
                     <Send className="w-4 h-4" /> Submit Resale Enquiry
                   </button>
                   <p className="text-center text-xs text-zinc-400 mt-3">

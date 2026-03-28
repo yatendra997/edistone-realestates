@@ -59,22 +59,22 @@ export default function ResidentialPage() {
 
                     {/* Links */}
                     <div className="hidden lg:flex items-center gap-8 text-[12px] font-bold tracking-widest uppercase text-zinc-700">
-                        <button onClick={() => scrollTo('about')} className="hover:text-[#C8A24D] transition-colors">ABOUT</button>
-                        <button onClick={() => scrollTo('amenities')} className="hover:text-[#C8A24D] transition-colors">AMENITIES</button>
-                        <button onClick={() => scrollTo('gallery')} className="hover:text-[#C8A24D] transition-colors">GALLERY</button>
-                        <button onClick={() => scrollTo('floor-plans')} className="hover:text-[#C8A24D] transition-colors">FLOOR PLAN</button>
-                        <button onClick={() => scrollTo('location')} className="hover:text-[#C8A24D] transition-colors">LOCATION</button>
-                        <button onClick={() => scrollTo('contact')} className="hover:text-[#C8A24D] transition-colors">CONTACT</button>
+                        <button onClick={() => scrollTo('about')} className="hover:text-[#FF5C00] transition-colors">ABOUT</button>
+                        <button onClick={() => scrollTo('amenities')} className="hover:text-[#FF5C00] transition-colors">AMENITIES</button>
+                        <button onClick={() => scrollTo('gallery')} className="hover:text-[#FF5C00] transition-colors">GALLERY</button>
+                        <button onClick={() => scrollTo('floor-plans')} className="hover:text-[#FF5C00] transition-colors">FLOOR PLAN</button>
+                        <button onClick={() => scrollTo('location')} className="hover:text-[#FF5C00] transition-colors">LOCATION</button>
+                        <button onClick={() => scrollTo('contact')} className="hover:text-[#FF5C00] transition-colors">CONTACT</button>
                     </div>
 
                     <div className="flex items-center gap-3 sm:gap-4">
                         {/* Call Button */}
-                        <a href="tel:+919220034414" className="bg-[#C8A24D] text-white px-4 sm:px-5 py-2.5 font-bold text-[11px] sm:text-sm flex items-center justify-center gap-2 rounded shadow-sm hover:shadow-md hover:bg-[#111111] transition-all">
+                        <a href="tel:+919220034414" className="bg-[#FF5C00] text-white px-4 sm:px-5 py-2.5 font-bold text-[11px] sm:text-sm flex items-center justify-center gap-2 rounded shadow-sm hover:shadow-md hover:bg-[#111111] transition-all">
                             <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" /> <span className="hidden sm:inline-block">+91 92200 34414</span><span className="sm:hidden">CALL</span>
                         </a>
 
                         {/* Mobile Hamburger */}
-                        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden p-1.5 text-[#111111] hover:bg-zinc-100 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-[#C8A24D]">
+                        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden p-1.5 text-[#111111] hover:bg-zinc-100 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF5C00]">
                             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                         </button>
                     </div>
@@ -83,12 +83,12 @@ export default function ResidentialPage() {
                 {/* Mobile Dropdown */}
                 {mobileMenuOpen && (
                     <div className="lg:hidden absolute top-[100%] left-0 w-full bg-white border-b border-zinc-200 shadow-xl flex flex-col px-6 py-4 gap-2 text-[11px] font-bold tracking-widest uppercase text-zinc-700 z-[120]">
-                        <button onClick={() => scrollTo('about')} className="w-full text-left py-3 border-b border-zinc-100 hover:text-[#C8A24D] transition-colors flex items-center justify-between">ABOUT <span className="text-zinc-300">&gt;</span></button>
-                        <button onClick={() => scrollTo('amenities')} className="w-full text-left py-3 border-b border-zinc-100 hover:text-[#C8A24D] transition-colors flex items-center justify-between">AMENITIES <span className="text-zinc-300">&gt;</span></button>
-                        <button onClick={() => scrollTo('gallery')} className="w-full text-left py-3 border-b border-zinc-100 hover:text-[#C8A24D] transition-colors flex items-center justify-between">GALLERY <span className="text-zinc-300">&gt;</span></button>
-                        <button onClick={() => scrollTo('floor-plans')} className="w-full text-left py-3 border-b border-zinc-100 hover:text-[#C8A24D] transition-colors flex items-center justify-between">FLOOR PLAN <span className="text-zinc-300">&gt;</span></button>
-                        <button onClick={() => scrollTo('location')} className="w-full text-left py-3 border-b border-zinc-100 hover:text-[#C8A24D] transition-colors flex items-center justify-between">LOCATION <span className="text-zinc-300">&gt;</span></button>
-                        <button onClick={() => scrollTo('contact')} className="w-full text-left py-3 hover:text-[#C8A24D] transition-colors flex items-center justify-between">CONTACT <span className="text-zinc-300">&gt;</span></button>
+                        <button onClick={() => scrollTo('about')} className="w-full text-left py-3 border-b border-zinc-100 hover:text-[#FF5C00] transition-colors flex items-center justify-between">ABOUT <span className="text-zinc-300">&gt;</span></button>
+                        <button onClick={() => scrollTo('amenities')} className="w-full text-left py-3 border-b border-zinc-100 hover:text-[#FF5C00] transition-colors flex items-center justify-between">AMENITIES <span className="text-zinc-300">&gt;</span></button>
+                        <button onClick={() => scrollTo('gallery')} className="w-full text-left py-3 border-b border-zinc-100 hover:text-[#FF5C00] transition-colors flex items-center justify-between">GALLERY <span className="text-zinc-300">&gt;</span></button>
+                        <button onClick={() => scrollTo('floor-plans')} className="w-full text-left py-3 border-b border-zinc-100 hover:text-[#FF5C00] transition-colors flex items-center justify-between">FLOOR PLAN <span className="text-zinc-300">&gt;</span></button>
+                        <button onClick={() => scrollTo('location')} className="w-full text-left py-3 border-b border-zinc-100 hover:text-[#FF5C00] transition-colors flex items-center justify-between">LOCATION <span className="text-zinc-300">&gt;</span></button>
+                        <button onClick={() => scrollTo('contact')} className="w-full text-left py-3 hover:text-[#FF5C00] transition-colors flex items-center justify-between">CONTACT <span className="text-zinc-300">&gt;</span></button>
                     </div>
                 )}
             </nav>
@@ -140,7 +140,7 @@ export default function ResidentialPage() {
                                 "No Maintenance Charges During Rental Period."
                             ].map((point, idx) => (
                                 <li key={idx} className="flex items-center gap-3">
-                                    <div className="w-4 h-4 rounded-full bg-[#C8A24D] flex flex-shrink-0 items-center justify-center mt-0.5">
+                                    <div className="w-4 h-4 rounded-full bg-[#FF5C00] flex flex-shrink-0 items-center justify-center mt-0.5">
                                         <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
                                     </div>
                                     <span className="text-gray-600 text-[15px] font-medium">{point}</span>
@@ -154,13 +154,13 @@ export default function ResidentialPage() {
                 <div className="flex flex-col lg:flex-row gap-0 items-stretch bg-gray-50 mb-24 relative overflow-hidden rounded-sm border border-gray-100">
                     <div className="w-full lg:w-1/2 p-6 sm:p-12 z-10 flex flex-col justify-center">
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="text-[10px] text-[#C8A24D] font-bold uppercase tracking-widest whitespace-nowrap">ABOUT</span>
-                            <div className="h-[1px] w-6 bg-[#C8A24D]"></div>
-                            <span className="text-[10px] text-[#C8A24D] font-bold uppercase tracking-widest whitespace-nowrap overflow-hidden text-ellipsis">EDISTONE APARTMENT</span>
+                            <span className="text-[10px] text-[#FF5C00] font-bold uppercase tracking-widest whitespace-nowrap">ABOUT</span>
+                            <div className="h-[1px] w-6 bg-[#FF5C00]"></div>
+                            <span className="text-[10px] text-[#FF5C00] font-bold uppercase tracking-widest whitespace-nowrap overflow-hidden text-ellipsis">EDISTONE APARTMENT</span>
                         </div>
 
                         <h2 className="text-3xl sm:text-4xl text-[#111111] font-bold mb-1 font-serif leading-tight">A Sanctuary of</h2>
-                        <h2 className="text-3xl sm:text-4xl text-[#C8A24D] font-serif italic mb-8">Elegance & Style</h2>
+                        <h2 className="text-3xl sm:text-4xl text-[#FF5C00] font-serif italic mb-8">Elegance & Style</h2>
 
                         <p className="text-gray-500 leading-relaxed text-[15px] mb-8 text-left sm:text-justify">
                             Edistone represents a paradigm shift in urban living. Nestled in a prime location, it harmonizes the tranquility of nature with the pulse of modern architecture.
@@ -169,7 +169,7 @@ export default function ResidentialPage() {
                             Every detail is meticulously curated for those who seek more than just a residence. From the sculptural entrance to the expansive vistas, we offer an environment crafted for the extraordinary.
                         </p>
 
-                        <button className="border border-[#C8A24D] text-gray-800 hover:bg-[#C8A24D] hover:text-white px-8 py-3 font-semibold text-xs transition-colors flex items-center justify-between gap-4 w-max group bg-white">
+                        <button className="border border-[#FF5C00] text-gray-800 hover:bg-[#FF5C00] hover:text-white px-8 py-3 font-semibold text-xs transition-colors flex items-center justify-between gap-4 w-max group bg-white">
                             LEARN MORE <span className="text-[14px] text-gray-400 group-hover:text-white">→</span>
                         </button>
                     </div>
@@ -183,7 +183,7 @@ export default function ResidentialPage() {
                 <div id="amenities" className="text-center mb-24 px-4 overflow-hidden pt-10 border-t border-gray-100">
                     <div className="flex items-center justify-center gap-4 mb-4">
                         <div className="h-[1px] w-10 bg-gray-300"></div>
-                        <span className="text-[#C8A24D] text-[10px] font-bold uppercase tracking-[0.2em]">AMENITIES</span>
+                        <span className="text-[#FF5C00] text-[10px] font-bold uppercase tracking-[0.2em]">AMENITIES</span>
                         <div className="h-[1px] w-10 bg-gray-300"></div>
                     </div>
 
@@ -210,10 +210,10 @@ export default function ResidentialPage() {
                             { name: "UPCOMING: Proposed Airport", icon: <Plane className="w-6 h-6 sm:w-7 sm:h-7 stroke-[1.5]" />, highlight: true },
                         ].map((amenity, idx) => (
                             <div key={idx} className="flex flex-col items-start justify-center min-h-[170px] text-left p-6 sm:p-8 border-b border-r border-gray-100 bg-white hover:bg-white hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-300 relative z-0 hover:z-10 group cursor-default">
-                                <div className={`mb-6 w-16 h-16 rounded-2xl flex items-center justify-center shadow-[inset_0_2px_10px_rgba(200,162,77,0.15)] bg-gradient-to-br ${amenity.highlight ? 'from-[#C8A24D]/20 to-[#C8A24D]/5 text-[#C8A24D]' : 'from-[#C8A24D]/10 to-transparent text-[#C8A24D]'} group-hover:scale-110 transition-transform duration-500`}>
+                                <div className={`mb-6 w-16 h-16 rounded-2xl flex items-center justify-center shadow-[inset_0_2px_10px_rgba(200,162,77,0.15)] bg-gradient-to-br ${amenity.highlight ? 'from-[#FF5C00]/20 to-[#FF5C00]/5 text-[#FF5C00]' : 'from-[#FF5C00]/10 to-transparent text-[#FF5C00]'} group-hover:scale-110 transition-transform duration-500`}>
                                     {amenity.icon}
                                 </div>
-                                <span className={`text-[12px] sm:text-[14px] font-bold tracking-wide leading-snug ${amenity.highlight ? 'text-[#C8A24D]' : 'text-[#111111]'}`}>
+                                <span className={`text-[12px] sm:text-[14px] font-bold tracking-wide leading-snug ${amenity.highlight ? 'text-[#FF5C00]' : 'text-[#111111]'}`}>
                                     {amenity.name}
                                 </span>
                             </div>
@@ -225,7 +225,7 @@ export default function ResidentialPage() {
                 <div id="gallery" className="text-center mb-24 px-4 pt-10 border-t border-gray-100">
                     <div className="flex items-center justify-center gap-4 mb-4">
                         <div className="h-[1px] w-10 bg-gray-300"></div>
-                        <span className="text-[#C8A24D] text-[10px] font-bold uppercase tracking-[0.2em]">PHOTOGRAPHY</span>
+                        <span className="text-[#FF5C00] text-[10px] font-bold uppercase tracking-[0.2em]">PHOTOGRAPHY</span>
                         <div className="h-[1px] w-10 bg-gray-300"></div>
                     </div>
 
@@ -250,7 +250,7 @@ export default function ResidentialPage() {
                             <div
                                 key={idx}
                                 onClick={() => setLightboxImage(`/residential/${img}`)}
-                                className="relative w-full aspect-[4/3] overflow-hidden group shadow-md border-4 border-white hover:border-[#C8A24D]/10 hover:shadow-2xl transition-all duration-500 rounded z-0 hover:z-10 cursor-pointer"
+                                className="relative w-full aspect-[4/3] overflow-hidden group shadow-md border-4 border-white hover:border-[#FF5C00]/10 hover:shadow-2xl transition-all duration-500 rounded z-0 hover:z-10 cursor-pointer"
                             >
                                 <img
                                     src={`/residential/${img}`}
@@ -259,7 +259,7 @@ export default function ResidentialPage() {
                                 />
                                 {/* HOVER OVERLAY LIGHTBOX BUTTON */}
                                 <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                                    <div className="bg-[#C8A24D] text-white font-bold text-[12px] tracking-[0.2em] px-8 py-3.5 uppercase shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 rounded-sm">
+                                    <div className="bg-[#FF5C00] text-white font-bold text-[12px] tracking-[0.2em] px-8 py-3.5 uppercase shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 rounded-sm">
                                         VIEW SPACE
                                     </div>
                                 </div>
@@ -307,7 +307,7 @@ export default function ResidentialPage() {
                                                 href={`/residential/${row.i}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="text-[#C8A24D] underline font-bold hover:text-orange-700 transition-colors"
+                                                className="text-[#FF5C00] underline font-bold hover:text-orange-700 transition-colors"
                                             >
                                                 Click to view
                                             </a>
@@ -343,7 +343,7 @@ export default function ResidentialPage() {
                             className="grayscale-[0.8] contrast-[1.1] opacity-90"
                         ></iframe>
                         {/* Search Bar Overlay Mimic */}
-                        <div className="absolute top-0 left-0 w-full bg-[#C8A24D] p-1.5 flex items-center justify-between z-10">
+                        <div className="absolute top-0 left-0 w-full bg-[#FF5C00] p-1.5 flex items-center justify-between z-10">
                             <div className="text-white font-bold text-xs px-4 flex items-center gap-2">
                                 <Navigation className="w-3.5 h-3.5" /> EDISTONE REAL ESTATES
                             </div>
@@ -363,7 +363,7 @@ export default function ResidentialPage() {
                                 { t: "MINS TO NOIDA", b: "(Yamuna Expressway)", i: <MapPin /> }
                             ].map((f, i) => (
                                 <div key={i} className="flex gap-4 items-center">
-                                    <div className="w-12 h-12 rounded-full border border-orange-100 flex items-center justify-center flex-shrink-0 text-[#C8A24D] bg-orange-50/50">
+                                    <div className="w-12 h-12 rounded-full border border-orange-100 flex items-center justify-center flex-shrink-0 text-[#FF5C00] bg-orange-50/50">
                                         <div className="w-5 h-5">{f.i}</div>
                                     </div>
                                     <div className="flex flex-col">
@@ -384,7 +384,7 @@ export default function ResidentialPage() {
                     {/* Left Info Column */}
                     <div className="lg:col-span-5 pr-0 lg:pr-10">
                         <h2 className="text-4xl text-white font-serif font-bold mb-1">Contact</h2>
-                        <h3 className="text-2xl text-[#C8A24D] font-black italic mb-6">with us</h3>
+                        <h3 className="text-2xl text-[#FF5C00] font-black italic mb-6">with us</h3>
 
                         <p className="text-[13px] leading-relaxed mb-10 pb-6 border-b border-gray-800 text-gray-400">
                             Experience our premium facilities firsthand. Schedule a visit with our expert sales team and discover why Edistone is the perfect choice for your business.
@@ -392,7 +392,7 @@ export default function ResidentialPage() {
 
                         <div className="space-y-6">
                             <div className="flex gap-4 items-start">
-                                <MapPin className="w-5 h-5 text-[#C8A24D] mt-1 shrink-0" />
+                                <MapPin className="w-5 h-5 text-[#FF5C00] mt-1 shrink-0" />
                                 <div className="flex flex-col">
                                     <span className="text-white font-bold text-xs tracking-widest uppercase mb-1">Corporate Office</span>
                                     <span className="text-xs text-gray-400 leading-relaxed">Office No. 626, 6th Floor, Aditya High Street NH 24, Ghaziabad, Uttar Pradesh 201009</span>
@@ -400,14 +400,14 @@ export default function ResidentialPage() {
                             </div>
 
                             <div className="flex gap-4 items-center">
-                                <Mail className="w-5 h-5 text-[#C8A24D] shrink-0" />
+                                <Mail className="w-5 h-5 text-[#FF5C00] shrink-0" />
                                 <div className="flex flex-col text-[13px]">
                                     <a href="mailto:sales@edistonerealestates.com" className="hover:text-white transition-colors">sales@edistonerealestates.com</a>
                                 </div>
                             </div>
 
                             <div className="flex gap-4 items-center">
-                                <Phone className="w-5 h-5 text-[#C8A24D] shrink-0" />
+                                <Phone className="w-5 h-5 text-[#FF5C00] shrink-0" />
                                 <div className="flex flex-col text-[13px]">
                                     <a href="tel:+919220034414" className="hover:text-white transition-colors">+91 9220034414</a>
                                 </div>
@@ -424,15 +424,15 @@ export default function ResidentialPage() {
 
                     {/* Right Form Column */}
                     <div className="lg:col-span-7 bg-[#171921] p-8 sm:p-12 rounded border border-gray-800 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
-                        <h4 className="text-white text-xs font-bold mb-8 uppercase tracking-widest text-[#C8A24D]">SEND US A MESSAGE</h4>
+                        <h4 className="text-white text-xs font-bold mb-8 uppercase tracking-widest text-[#FF5C00]">SEND US A MESSAGE</h4>
                         <form className="space-y-5">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                <input type="text" placeholder="Your Name" className="w-full bg-[#111217] border border-gray-800 rounded p-4 text-[13px] text-white focus:border-[#C8A24D] outline-none transition-colors" />
-                                <input type="email" placeholder="Email Address" className="w-full bg-[#111217] border border-gray-800 rounded p-4 text-[13px] text-white focus:border-[#C8A24D] outline-none transition-colors" />
+                                <input type="text" placeholder="Your Name" className="w-full bg-[#111217] border border-gray-800 rounded p-4 text-[13px] text-white focus:border-[#FF5C00] outline-none transition-colors" />
+                                <input type="email" placeholder="Email Address" className="w-full bg-[#111217] border border-gray-800 rounded p-4 text-[13px] text-white focus:border-[#FF5C00] outline-none transition-colors" />
                             </div>
-                            <input type="tel" placeholder="Phone Number" className="w-full bg-[#111217] border border-gray-800 rounded p-4 text-[13px] text-white focus:border-[#C8A24D] outline-none transition-colors" />
-                            <textarea rows={5} placeholder="Your Message" className="w-full bg-[#111217] border border-gray-800 rounded p-4 text-[13px] text-white focus:border-[#C8A24D] outline-none resize-none transition-colors"></textarea>
-                            <button type="button" className="w-auto bg-[#C8A24D] hover:bg-[#d84800] text-white px-10 py-4 rounded font-bold text-[11px] tracking-[0.2em] uppercase transition-colors mt-2">
+                            <input type="tel" placeholder="Phone Number" className="w-full bg-[#111217] border border-gray-800 rounded p-4 text-[13px] text-white focus:border-[#FF5C00] outline-none transition-colors" />
+                            <textarea rows={5} placeholder="Your Message" className="w-full bg-[#111217] border border-gray-800 rounded p-4 text-[13px] text-white focus:border-[#FF5C00] outline-none resize-none transition-colors"></textarea>
+                            <button type="button" className="w-auto bg-[#FF5C00] hover:bg-[#d84800] text-white px-10 py-4 rounded font-bold text-[11px] tracking-[0.2em] uppercase transition-colors mt-2">
                                 SEND MESSAGE
                             </button>
                         </form>
@@ -447,7 +447,7 @@ export default function ResidentialPage() {
                 <div className="hidden sm:flex max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-4">
                     {/* Left Icon Info */}
                     <div className="flex items-center gap-4 w-full lg:w-auto justify-center lg:justify-start">
-                        <div className="w-10 h-10 lg:w-12 lg:h-12 bg-orange-100/50 rounded-full flex items-center justify-center text-[#C8A24D] shrink-0">
+                        <div className="w-10 h-10 lg:w-12 lg:h-12 bg-orange-100/50 rounded-full flex items-center justify-center text-[#FF5C00] shrink-0">
                             <Phone className="w-4 h-4 lg:w-5 lg:h-5 fill-current" />
                         </div>
                         <div className="flex flex-col">
@@ -461,16 +461,16 @@ export default function ResidentialPage() {
                         <input
                             type="text"
                             placeholder="Your Name"
-                            className="w-full sm:w-[220px] bg-white border border-gray-200 rounded px-4 py-2.5 lg:py-3 text-[13px] outline-none focus:border-[#C8A24D] text-gray-800 shadow-sm"
+                            className="w-full sm:w-[220px] bg-white border border-gray-200 rounded px-4 py-2.5 lg:py-3 text-[13px] outline-none focus:border-[#FF5C00] text-gray-800 shadow-sm"
                         />
                         <input
                             type="tel"
                             placeholder="+91 Phone"
-                            className="w-full sm:w-[220px] bg-white border border-gray-200 rounded px-4 py-2.5 lg:py-3 text-[13px] outline-none focus:border-[#C8A24D] text-gray-800 shadow-sm"
+                            className="w-full sm:w-[220px] bg-white border border-gray-200 rounded px-4 py-2.5 lg:py-3 text-[13px] outline-none focus:border-[#FF5C00] text-gray-800 shadow-sm"
                         />
                         <button
                             type="button"
-                            className="w-full sm:w-auto bg-[#C8A24D] hover:bg-[#d84800] text-white px-8 py-2.5 lg:py-3 rounded font-bold text-[11px] sm:text-[12px] flex items-center justify-center gap-2 transition-colors whitespace-nowrap shadow-md uppercase tracking-wider"
+                            className="w-full sm:w-auto bg-[#FF5C00] hover:bg-[#d84800] text-white px-8 py-2.5 lg:py-3 rounded font-bold text-[11px] sm:text-[12px] flex items-center justify-center gap-2 transition-colors whitespace-nowrap shadow-md uppercase tracking-wider"
                         >
                             <Send className="w-3.5 h-3.5" /> ENQUIRE NOW
                         </button>
@@ -487,7 +487,7 @@ export default function ResidentialPage() {
                     </a>
                     <button
                         type="button"
-                        className="flex-1 bg-[#C8A24D] text-white py-3 border-2 border-[#C8A24D] rounded text-[11px] font-bold flex items-center justify-center gap-2 shadow-md uppercase"
+                        className="flex-1 bg-[#FF5C00] text-white py-3 border-2 border-[#FF5C00] rounded text-[11px] font-bold flex items-center justify-center gap-2 shadow-md uppercase"
                     >
                         <Send className="w-4 h-4" /> ENQUIRE NOW
                     </button>
@@ -513,7 +513,7 @@ export default function ResidentialPage() {
                 >
                     {/* Close Button */}
                     <button
-                        className="absolute top-6 right-6 text-white bg-black/50 hover:bg-[#C8A24D] border-2 border-white rounded-full w-12 h-12 flex items-center justify-center transition-colors shadow-lg z-[510] cursor-pointer"
+                        className="absolute top-6 right-6 text-white bg-black/50 hover:bg-[#FF5C00] border-2 border-white rounded-full w-12 h-12 flex items-center justify-center transition-colors shadow-lg z-[510] cursor-pointer"
                         onClick={(e) => { e.stopPropagation(); setLightboxImage(null); }}
                     >
                         <span className="text-2xl font-light leading-none mb-1">×</span>
