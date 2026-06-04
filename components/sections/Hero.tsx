@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, Send, Mail, X } from "lucide-react";
 import Image from "next/image";
 
 const SLIDES = [
-    { id: 1, image: "/Edistone-hero-banner-1.png" },
+    { id: 1, image: "/hero-banner-1.png" },
     { id: 2, image: "/Hero-banner-2.png" },
     { id: 3, image: "/hero-banner-3.png" },
     { id: 4, image: "/hero-banner-4.png" },
@@ -92,7 +92,7 @@ export default function Hero() {
                             alt={`Hero Slide ${slide.id}`}
                             fill
                             priority={slide.id === 1}
-                            className="object-cover object-center"
+                            className={slide.id === 1 ? "object-cover object-bottom" : "object-cover object-center"}
                             unoptimized={true}
                             sizes="100vw"
                         />

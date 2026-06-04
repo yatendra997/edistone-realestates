@@ -14,9 +14,9 @@ export default function Contact() {
                     
                     {/* Left Column: Text & Info */}
                     <div className="lg:col-span-5 flex flex-col pt-0">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FF5C00]/10 border border-[#FF5C00]/20 rounded-full mb-6 w-max">
-                            <span className="w-2 h-2 rounded-full bg-[#FF5C00] animate-pulse" />
-                            <span className="text-[#FF5C00] text-xs font-bold uppercase tracking-widest">Connect With Us</span>
+                        <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-[#FF5C00]/10 border border-[#FF5C00]/30 rounded-full mb-6 w-max shadow-sm">
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#FF5C00] animate-pulse" />
+                            <span className="text-[#FF5C00] text-base font-extrabold uppercase tracking-widest">Connect With Us</span>
                         </div>
                         
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-white tracking-tight mb-4">

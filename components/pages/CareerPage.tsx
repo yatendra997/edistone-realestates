@@ -139,39 +139,64 @@ export default function CareerPage() {
   return (
     <div className="w-full bg-white">
 
-      {/* ── Hero Banner ── */}
-      <section className="w-full bg-[#111111] py-24 sm:py-36 relative overflow-hidden">
-        {/* Background image & overlays */}
-        <div className="absolute inset-0 bg-[url('/career.jpg')] bg-cover bg-center bg-no-repeat opacity-100" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent" />
-        
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#FF5C00]/40 to-transparent rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl mix-blend-screen" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[#FF5C00]/30 to-transparent rounded-full translate-y-1/2 -translate-x-1/4 blur-3xl mix-blend-screen" />
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF5C00] to-transparent z-20" />
+      {/* ── Hero Banner — 50/50 layout, light theme ── */}
+      <section className="w-full bg-[#F7F7F5] pt-[88px]">
+        <div className="max-w-[1300px] mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-        <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-5 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full mb-8 shadow-xl">
-            <Briefcase className="w-4 h-4 text-[#FF5C00]" />
-            <span className="text-white text-xs font-bold uppercase tracking-widest">We&apos;re Hiring</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-light text-white tracking-tight mb-6 drop-shadow-xl">
-            Build Your <span className="font-black text-[#FF5C00] drop-shadow-2xl">Career</span><br />
-            <span className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light text-white/90 drop-shadow-lg">With Edistone</span>
-          </h1>
-          <p className="text-white/90 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed font-light mb-12 drop-shadow-md">
-            Join a team that is redefining real estate in NCR. At Edistone, we value ambition, integrity, and the desire to make a lasting impact on people&apos;s lives.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#openings"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-[#FF5C00] text-white text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-[#111111] transition-all duration-300 shadow-lg shadow-[#FF5C00]/20">
-              View Current Openings
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a href="mailto:info@edistonerealestates.com"
-              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-zinc-500 text-zinc-300 text-sm font-bold uppercase tracking-widest hover:border-[#FF5C00] hover:text-[#FF5C00] transition-colors">
-              <Mail className="w-4 h-4" /> Send Your CV
-            </a>
+            {/* ── LEFT — Text ── */}
+            <div className="flex flex-col">
+
+              {/* Tag */}
+              <div className="inline-flex items-center gap-2 mb-7 w-max">
+                <span className="w-2 h-2 rounded-full bg-[#FF5C00] animate-pulse shrink-0" />
+                <span className="text-[#FF5C00] text-[11px] font-bold uppercase tracking-[0.25em]">Now Recruiting</span>
+              </div>
+
+              {/* Headline */}
+              <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] xl:text-[5rem] font-black text-[#111111] leading-[1.0] tracking-tight mb-6">
+                We Are<br />
+                <span className="text-[#FF5C00]">Hiring.</span>
+              </h1>
+
+              {/* Orange accent bar */}
+              <div className="w-12 h-[3px] bg-[#FF5C00] mb-7" />
+
+              {/* Body */}
+              <p className="text-[#6B6B6B] text-[15px] sm:text-[16px] leading-[1.8] max-w-[440px] mb-10">
+                Join Edistone Real Estates and build a rewarding career in one of NCR&apos;s most trusted real estate companies. We are looking for passionate people across sales, marketing, and operations.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="#openings"
+                  className="group inline-flex items-center gap-2 px-7 py-3.5 bg-[#FF5C00] text-white text-[12px] font-bold uppercase tracking-widest hover:bg-[#111111] transition-colors duration-300 shadow-sm"
+                >
+                  View Open Roles
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a
+                  href="mailto:info@edistonerealestates.com"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 border border-zinc-300 text-[#444444] text-[12px] font-bold uppercase tracking-widest hover:border-[#FF5C00] hover:text-[#FF5C00] transition-colors bg-white"
+                >
+                  <Mail className="w-3.5 h-3.5" /> Send Your CV
+                </a>
+              </div>
+
+            </div>
+
+            {/* ── RIGHT — Contained Image ── */}
+            <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-xl">
+              <Image
+                src="/career-hero.png"
+                alt="Career at Edistone Real Estates — Join our team in NCR"
+                fill
+                className="object-cover object-center"
+                priority
+              />
+            </div>
+
           </div>
         </div>
       </section>

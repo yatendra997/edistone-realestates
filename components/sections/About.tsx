@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CheckCircle2, Quote, Award, Users, Building2, Shield } from "lucide-react";
+import { Quote, Award, Building2 } from "lucide-react";
 
 const STATS = [
   { value: "500+", label: "Projects Delivered" },
@@ -10,12 +10,7 @@ const STATS = [
   { value: "NCR", label: "Pan-India Reach" },
 ];
 
-const FEATURES = [
-  "End-to-end Seamless Guidance",
-  "Deep Market Expertise",
-  "Unwavering Transparency",
-  "Tailored Client-First Approach",
-];
+
 
 export default function About() {
   return (
@@ -109,16 +104,7 @@ export default function About() {
               </p>
             </div>
 
-            {/* Feature bullets */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {FEATURES.map((item, idx) => (
-                <div key={idx}
-                  className="flex items-center gap-3 bg-[#F7F7F5] border border-zinc-200/80 rounded-xl px-4 py-3 hover:border-[#FF5C00]/40 hover:bg-orange-50/30 transition-colors duration-300">
-                  <CheckCircle2 className="w-5 h-5 text-[#FF5C00] flex-shrink-0" />
-                  <span className="text-sm font-semibold text-[#111111]">{item}</span>
-                </div>
-              ))}
-            </div>
+
 
             {/* Quote block */}
             <div className="relative bg-[#111111] rounded-2xl px-7 py-6 overflow-hidden">

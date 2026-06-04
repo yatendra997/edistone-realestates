@@ -73,11 +73,11 @@ export default function TopBar() {
       <div className="flex items-center gap-3 sm:gap-4">
         <span className="hidden sm:inline-block text-zinc-500 text-[10px] uppercase tracking-wider">Follow Us:</span>
 
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+        <a href="https://www.instagram.com/edistone_realestate/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
           className="text-zinc-400 hover:text-[#FF5C00] transition-all hover:scale-110 duration-200">
           <InstagramIcon className="w-3.5 h-3.5" />
         </a>
-        <a href="https://www.facebook.com/photo/?fbid=122133194294886025&set=a.122110298894886025" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+        <a href="https://www.facebook.com/edistoneofficial/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
           className="text-zinc-400 hover:text-[#FF5C00] transition-all hover:scale-110 duration-200">
           <FacebookIcon className="w-3.5 h-3.5" />
         </a>

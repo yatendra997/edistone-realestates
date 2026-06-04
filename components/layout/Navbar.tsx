@@ -61,10 +61,10 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`w-full fixed top-0 left-0 right-0 z-[100] transition-colors duration-300 shrink-0 h-[88px] flex items-center ${
+        className={`w-full fixed top-0 left-0 right-0 z-[100] transition-all duration-300 shrink-0 h-[88px] flex items-center bg-[#111111] ${
           isScrolled
-            ? "bg-[#111111] shadow-xl border-b border-white/10"
-            : "bg-transparent border-b border-white/10"
+            ? "shadow-xl border-b border-white/10"
+            : "border-b border-white/5"
         }`}
       >
         <div className="w-full max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 2xl:px-16 h-full flex items-center justify-between gap-4">

@@ -32,13 +32,13 @@ const QUICK_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
-  { href: "https://www.instagram.com/", label: "Instagram", icon: <Instagram className="w-4 h-4" /> },
-  { href: "https://www.facebook.com/photo/?fbid=122133194294886025&set=a.122110298894886025", label: "Facebook", icon: <Facebook className="w-4 h-4" /> },
+  { href: "https://www.instagram.com/edistone_realestate/", label: "Instagram", icon: <Instagram className="w-4 h-4" /> },
+  { href: "https://www.facebook.com/edistoneofficial/", label: "Facebook", icon: <Facebook className="w-4 h-4" /> },
   { href: "https://x.com/R17516Edistone", label: "X (Twitter)", icon: <Twitter className="w-4 h-4" /> },
   { href: "https://www.youtube.com/", label: "YouTube", icon: <Youtube className="w-4 h-4" /> },
   { href: "https://www.linkedin.com/", label: "LinkedIn", icon: <Linkedin className="w-4 h-4" /> },
   { href: "https://www.quora.com/", label: "Quora", icon: <QuoraIcon className="w-4 h-4" /> },
-  { href: "https://wa.me/919220034418", label: "WhatsApp", icon: <WhatsAppIcon className="w-4 h-4" /> },
+  { href: "https://wa.me/919220034414", label: "WhatsApp", icon: <WhatsAppIcon className="w-4 h-4" /> },
 ];
 
 export default function Footer() {
@@ -59,7 +59,7 @@ export default function Footer() {
                   </span>
                   <div className="flex items-center gap-2 mt-1 sm:mt-1.5 ml-0.5">
                     <div className="h-[2px] w-8 sm:w-10 bg-[#FF5C00]" />
-                    <span className="text-[#FF5C00] font-bold uppercase tracking-[0.25em] text-[9.5px] sm:text-[11px]" style={{ fontFamily: '"Inter", "Arial", sans-serif' }}>
+                    <span className="text-[#FF5C00] font-bold uppercase tracking-[0.18em] text-[10px] sm:text-[11px] whitespace-nowrap" style={{ fontFamily: '"Inter", "Arial", sans-serif' }}>
                       REAL ESTATES
                     </span>
                   </div>
@@ -186,7 +186,7 @@ export default function Footer() {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/919220034418"
+        href="https://wa.me/919220034414"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"

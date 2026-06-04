@@ -33,7 +33,7 @@ export const NEW_PROJECTS: Project[] = [
 
   // Greater Noida – Residential
   { id: 10, location: "Greater Noida", type: "Residential", title: "VVIP Addresses", info: "Signature Luxury Residences", image: "/Project-images/vvip-address-greaternoida.png", badge: "Premium", slug: "vvip-addresses" },
-  { id: 11, location: "Greater Noida", type: "Residential", title: "ACE Hane", info: "Smart 3/4 BHK Homes", image: "/Project-images/Ace-hanei.webp", slug: "ace-hane" },
+  { id: 11, location: "Greater Noida", type: "Residential", title: "ACE Hane", info: "Smart 3/4 BHK Flats", image: "/Project-images/Ace-hanei.webp", slug: "ace-hane" },
   { id: 12, location: "Greater Noida", type: "Residential", title: "KVD", info: "Premium Residential Project", image: "/Project-images/KVC.jpg", badge: "New", slug: "kvd" },
 
   // Greater Noida – Commercial

@@ -61,7 +61,7 @@ export default function Gallery() {
                     <div className="w-full max-w-md border-b border-[#111111] mb-2" />
                     <div className="w-full max-w-md border-b-2 border-[#111111]" />
                     <p className="mt-6 text-[#6B6B6B] text-sm uppercase tracking-widest font-semibold text-center">
-                        A glimpse into our premium Indian residential & commercial projects
+                        Moments, milestones &amp; memories — a glimpse into the Edistone journey
                     </p>
                 </div>
 
