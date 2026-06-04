@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import TopBar from "@/components/layout/TopBar";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CareerPage from "@/components/pages/CareerPage";
@@ -19,7 +18,6 @@ export const metadata: Metadata = {
 export default function Career() {
   return (
     <main className="flex min-h-screen flex-col w-full">
-      <TopBar />
       <Navbar />
       <CareerPage />
       <Footer />

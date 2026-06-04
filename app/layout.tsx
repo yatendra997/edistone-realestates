@@ -30,7 +30,11 @@ export const metadata: Metadata = {
     siteName: "Edistone Real Estates",
   },
   icons: {
-    icon: "/logo.svg",
+    icon: [
+      { url: "/edistone-logo.png?v=4", type: "image/png", sizes: "any" },
+    ],
+    shortcut: [{ url: "/edistone-logo.png?v=4", type: "image/png" }],
+    apple: [{ url: "/edistone-logo.png?v=4", type: "image/png" }],
   },
 };
 
@@ -41,6 +45,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/png" href="/edistone-logo.png?v=4" />
+        <link rel="shortcut icon" type="image/png" href="/edistone-logo.png?v=4" />
+        <link rel="apple-touch-icon" type="image/png" href="/edistone-logo.png?v=4" />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
       </body>

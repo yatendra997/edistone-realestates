@@ -42,7 +42,7 @@ function Counter({ end, suffix = "" }: { end: number; suffix?: string }) {
     }, [end, hasAnimated]);
 
     return (
-        <div ref={ref} className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#C8A24D] mb-1 tracking-wide">
+        <div ref={ref} className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#FF5C00] mb-1 tracking-wide">
             {count.toLocaleString()}{suffix}
         </div>
     );
